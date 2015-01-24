@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  authenticate :user, lambda { |user| user.admin? } do
+    mount Upmin::Engine => '/admin'
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
