@@ -36,5 +36,15 @@ module Cherashev
       g.template_engine :slim
       g.factory_girl dir: 'spec/factories'
     end
+
+    require 'redis-store' # HACK
+    config.cache_store = :redis_store,
+        {
+            host: 'localhost',
+            port: 6379,
+            db: 2,
+            namespace: 'cache',
+            expires_in: 30.minutes,
+        }
   end
 end
