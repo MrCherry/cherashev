@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+    title
+      = content_for?(:title) ? yield(:title) : 'Cherashev'
+    meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Cherashev'}"
+    == stylesheet_link_tag "application", :media => 'all', 'data-turbolinks-track' => true
+    == javascript_include_tag 'application', 'data-turbolinks-track' => true
+    == csrf_meta_tags
+  body
+    .container
+      header
+        == render 'layouts/navigation'
+      div
+        == render 'layouts/messages'
+      .row
+        .col-lg-8
+          == yield
+        .col-lg-4
+          h3 Hello
+          p Lorem ip, fucking, sum
+      footer
+        .row
+          .col-lg-10
+
+          .col-lg-2
+            p cherashev.com
+
+
