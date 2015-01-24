@@ -16,7 +16,7 @@
 # used to set extended properties on the server.
 set :stage, :production
 server 'cherashev.com', user: 'cherashev', roles: %w{web app db}
-set :branch, 'master'
+set :branch, 'production'
 
 set :rails_env, 'production'
 
