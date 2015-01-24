@@ -6,11 +6,10 @@ namespace :setup do
     # invoke 'setup:nginx_reload'
   end
 
-  desc 'Upload database.yml and secrets.yml files.'
+  desc 'Upload secrets.yml files.'
   task :upload_yml do
     on roles(:app) do
       execute "mkdir -p #{shared_path}/config"
-      upload! StringIO.new(File.read("config/database.yml")), "#{shared_path}/config/database.yml"
       upload! StringIO.new(File.read("config/secrets.yml")), "#{shared_path}/config/secrets.yml"
     end
   end
