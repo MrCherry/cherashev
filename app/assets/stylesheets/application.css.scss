@@ -11,8 +11,8 @@
  * file per style scope.
  *
  *= require_tree .
- *  require nprogress
- *  require nprogress-bootstrap
+ *= require nprogress
+ *= require nprogress-bootstrap
  *= require_self
  */
 
