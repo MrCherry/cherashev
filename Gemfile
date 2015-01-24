@@ -99,6 +99,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'rspec-rails'
   gem 'capybara'
+  # gem 'selenium-webdriver'
   gem 'poltergeist'
   gem 'factory_girl_rails'
   gem 'faker'
