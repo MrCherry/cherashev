@@ -7,6 +7,11 @@ RSpec.describe WelcomeController, :type => :controller do
       get :index
       expect(response).to have_http_status(:success)
     end
+
+    it "uses WIP layout" do
+      get :index
+      expect(response).to render_template(layout: 'wip')
+    end
   end
 
 end
