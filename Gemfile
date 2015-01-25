@@ -55,8 +55,8 @@ gem 'capistrano-rvm', require: false
 gem 'capistrano3-unicorn', require: false
 gem 'net-ssh'
 
-# Russian
-gem 'russian'
+# i18n
+gem 'rails-i18n'
 
 # NProgress
 gem 'nprogress-rails'
