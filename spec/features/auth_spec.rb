@@ -12,20 +12,20 @@ feature "Auth", :type => :feature, :js => true do
       fill_in 'user_email', with: user.email
       fill_in 'user_password', with: password
 
-      click_button 'Sign in'
+      click_button 'Войти'
 
-      expect(page).to have_text 'Signed in successfully.'
+      expect(page).to have_text 'Вход в систему выполнен.'
     end
 
     it "doesn't sign in if given credentials are invalid" do
       visit new_user_session_path
 
-      fill_in 'Email', with: Faker::Internet.email
-      fill_in 'Password', with: Faker::Internet.password(8)
+      fill_in 'user_email', with: Faker::Internet.safe_email
+      fill_in 'user_password', with: Faker::Internet.password(8)
 
-      click_button 'Sign in'
+      click_button 'Войти'
 
-      expect(page).to have_text 'Invalid email or password.'
+      expect(page).to have_text 'Неверные email или пароль.'
     end
   end
 end
