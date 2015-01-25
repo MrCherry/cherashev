@@ -63,6 +63,7 @@ gem 'nprogress-rails'
 
 # Pagination
 gem 'kaminari'
+gem 'kaminari-i18n'
 
 # Redis cache store
 gem 'redis-rails'
