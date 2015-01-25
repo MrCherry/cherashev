@@ -13,3 +13,5 @@
 /tmp
 secrets.yml
 .idea
+coverage
+.capistrano

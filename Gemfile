@@ -27,9 +27,6 @@ gem 'turbolinks'
 # bundle exec rake doc:rails generates the API under doc/api.
 # gem 'sdoc', '~> 0.4.0', group: :doc
 
-# Zurb foundation
-# gem 'foundation-rails'
-
 # Twitter Bootstrap
 gem 'bootstrap-sass'
 
@@ -39,6 +36,9 @@ gem 'rails_layout', group: :development
 # Slim
 gem 'slim-rails'
 gem 'html2slim', group: :development
+
+gem 'bootstrap-wysihtml5-rails', :git => 'git://github.com/Nerian/bootstrap-wysihtml5-rails.git'
+gem 'simple_form'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -65,6 +65,9 @@ gem 'nprogress-rails'
 gem 'kaminari'
 gem 'kaminari-i18n'
 
+# Truncate text
+gem 'truncate_html'
+
 # Redis cache store
 gem 'redis-rails'
 gem 'redis-rack-cache'
@@ -77,7 +80,7 @@ gem 'js-routes'
 
 # Auth
 gem 'devise'
-gem 'cancan'
+gem 'cancancan'
 
 # Upmin — admin panel
 gem 'upmin-admin'
@@ -106,5 +109,6 @@ group :development, :test do
   gem 'faker'
   gem 'database_cleaner'
   gem 'guard-rspec'
+  gem 'simplecov'
 end
 
