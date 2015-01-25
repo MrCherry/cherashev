@@ -24,8 +24,8 @@ feature "Auth", :type => :feature, :js => true do
       fill_in 'user_password', with: Faker::Internet.password(8)
 
       click_button 'Войти'
-
-      expect(page).to have_text 'Неверные email или пароль.'
+      
+      expect(page).to have_text 'Неверный email или пароль.'
     end
   end
 end
