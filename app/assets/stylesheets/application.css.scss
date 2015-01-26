@@ -48,12 +48,16 @@ body, .wysihtml5 {
   line-height: 1.5;
   font-family: 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
   font-weight: 300;
-  color: #444;
+  color: #555;
 }
 
 nav {
   background: none !important;
   border: none !important;
+  .navbar-brand {
+    position: relative;
+    top: -2px;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {

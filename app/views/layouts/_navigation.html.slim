@@ -7,17 +7,17 @@ nav.navbar.navbar-default.navbar-static-top[role="navigation"]
         span.icon-bar
         span.icon-bar
 
-      = link_to '<ФёдорЧерашев/>', root_path, class: 'navbar-brand btn btn-lg'
+      = link_to 'puts puts puts', root_path, class: 'navbar-brand text-bold btn btn-lg'
 
     #nav-bar.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-left
-        li = link_to 'Блог', blog_path
-        li = link_to 'Обо мне', root_path
-        li = link_to 'Резюме', root_path
-        li = link_to 'Контакты', root_path
+        /li = link_to 'Блог', blog_path
+        li = link_to 'Обо мне', '/pages/about'
+        li = link_to 'Резюме', '/pages/resume'
+        li = link_to 'Контакты', '/pages/contacts'
 
       ul.nav.navbar-nav.navbar-right
-        - if can? :manage, Page
+        - if user_signed_in?
           - if can? :manage, Page
             li.dropdown
               a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-expanded="false"]
