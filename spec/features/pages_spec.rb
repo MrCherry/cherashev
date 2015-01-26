@@ -2,7 +2,9 @@ require 'rails_helper'
 
 feature "Pages", :type => :feature, js: true do
   it "can be created by admin user" do
-    login_as(create(:admin_user), scope: :user)
+    user = create(:user)
+    user.role = :admin
+    login_as(user, scope: :user)
 
     visit new_page_path
 
