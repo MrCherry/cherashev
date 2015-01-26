@@ -17,8 +17,96 @@
  *= require_self
  */
 
-body {
-  font: 18px/1.5 'Helvetica Neue', sans-serif;
-  font-weight: 200;
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700&subset=latin,cyrillic,cyrillic-ext);
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400&subset=latin,cyrillic,cyrillic-ext);
+
+* {
+  margin: 0;
 }
 
+html, body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -10rem;
+}
+
+.container {
+  max-width: 960px;
+}
+
+body, .wysihtml5 {
+  background: #FFF;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+  font-weight: 300;
+  color: #444;
+}
+
+nav {
+  background: none !important;
+  border: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #000;
+  font-weight: 100;
+  font-size: 4em;
+  a {text-decoration: none !important;}
+}
+h2 {font-size: 3.5em}
+h3 {font-size: 3em}
+h4 {font-size: 2.5em}
+h5 {font-size: 2em}
+h6 {font-size: 1.5em}
+
+p, article, .wysihtml5 {
+  font-family: 'Roboto Slab', 'Georgia', serif;
+}
+
+
+img {
+  @extend .img-responsive;
+  margin: 0 auto;
+}
+
+main {
+  @extend .container;
+  padding-bottom: 30px;
+//  width: 100%;
+  margin-top: 20px;
+}
+section {
+  @extend .row;
+  margin-top: 20px;
+}
+
+#footer-pusher {
+  height: 10rem;
+}
+
+footer {
+  @include gradient-vertical(#FFF, #EEE);
+  height: 10rem;
+  line-height: 10rem;
+  overflow: hidden;
+
+  p {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 20px;
+  }
+}
+
+iframe.wysihtml5-sandbox {
+  height: 300px !important;
+}

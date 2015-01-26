@@ -2,23 +2,30 @@ doctype html
 html
   head
     meta[name="viewport" content="width=device-width, initial-scale=1.0"]
-    title= content_for?(:title) ? yield(:title) : 'Cherashev'
-    meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Cherashev'}"
+    title= content_for?(:title) ? yield(:title) : 'cherashev.com'
+    meta name="description" content="#{content_for?(:description) ? yield(:description) : 'cherashev.com'}"
     == stylesheet_link_tag "application", :media => 'all', 'data-turbolinks-track' => true
     == javascript_include_tag 'application', 'data-turbolinks-track' => true
     == csrf_meta_tags
+
   body
-    .container
+
+    .container.wrapper
+
       header
         == render 'layouts/navigation'
-      div
-        == render 'layouts/messages'
-      .row
-        .col-lg-12
-          == yield
-      footer
+
+      main[role="main"]
         .row
-          .col-lg-12
-            p.pull-right cherashev.com
+          .col-sm-12
+            == render 'layouts/messages'
+        .row
+          .col-sm-12
+            == yield
+
+      #footer-pusher
+
+    footer
+      p.text-center.text-muted.small cherashev.com &copy; 2015
 
 
