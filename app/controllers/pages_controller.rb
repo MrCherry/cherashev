@@ -59,12 +59,7 @@ class PagesController < ApplicationController
 
   private
     def set_page
-      relation = if params[:alias].present?
-        Page.where(alias: params[:alias])
-      else
-        Page.where(id: params[:id])
-      end
-
+      relation = Page.where("id = CAST(? AS numeric) OR alias = ?", params[:id].to_i, params[:id].to_s)
       relation = relation.blog_posts if route_name == :blog_post
       relation = relation.published unless can?(:manage, Page)
       @page = relation.first!
