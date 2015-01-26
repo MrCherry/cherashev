@@ -25,8 +25,8 @@ nav.navbar.navbar-default.navbar-static-top[role="navigation"]
 
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
-          - if current_user.admin?
-            li= link_to 'Админка', upmin.root_path
+          /- if current_user.admin?
+          /  li= link_to 'Админка', upmin.root_path
           li= link_to 'Аккаунт', edit_user_registration_path
           li= link_to 'Выйти', destroy_user_session_path, method: :delete, data: {confirm: 'Вы уверены?'}
         - else

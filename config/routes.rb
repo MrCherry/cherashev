@@ -6,10 +6,6 @@ Rails.application.routes.draw do
                        passwords: 'users/passwords'
                    }
 
-  authenticate :user, lambda { |user| user.admin? } do
-    mount Upmin::Engine => '/admin'
-  end
-
   resources :pages
 
   # The priority is based upon order of creation: first created -> highest priority.

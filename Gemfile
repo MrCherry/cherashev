@@ -83,7 +83,7 @@ gem 'devise'
 gem 'cancancan'
 
 # Upmin — admin panel
-gem 'upmin-admin'
+# gem 'upmin-admin'
 # gem 'rails_admin', github: 'sferik/rails_admin'
 # typus
 # gem 'activeadmin', github: 'activeadmin'

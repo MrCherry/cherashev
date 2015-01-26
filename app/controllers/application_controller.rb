@@ -16,10 +16,10 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if resource.admin?
-      upmin.root_path
-    else
+    # if resource.admin?
+    #   upmin.root_path
+    # else
       edit_user_registration_path
-    end
+    # end
   end
 end
