@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "Upmin", :type => :feature do
+feature "Upmin", :type => :feature, skip: true do
 
   it "is available for users with the admin role" do
     login_as(create(:admin_user), scope: :user)
