@@ -38,6 +38,7 @@ ru:
     attributes:
       page:
         category: "Категория"
+        alias: "Псевдоним"
         state: "Статус"
         categories:
           static: "Обычная"

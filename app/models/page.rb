@@ -3,6 +3,7 @@ class Page < ActiveRecord::Base
   enum state: [:draft, :published, :archived, :deleted]
 
   validates :title, presence: true
+  validates :alias, presence: true # TODO: autogenerate I18n::transliterate(self.title)
 
   scope :latest, ->{order('created_at DESC')}
   scope :published, ->{where(state: Page.states[:published])}

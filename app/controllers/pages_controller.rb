@@ -59,19 +59,24 @@ class PagesController < ApplicationController
 
   private
     def set_page
-      relation = Page.where(id: params[:id])
+      relation = if params[:alias].present?
+        Page.where(alias: params[:alias])
+      else
+        Page.where(id: params[:id])
+      end
+
       relation = relation.blog_posts if route_name == :blog_post
       relation = relation.published unless can?(:manage, Page)
       @page = relation.first!
     end
 
     def page_params
-      params.require(:page).permit(:title, :text, :category, :state)
+      params.require(:page).permit(:title, :text, :category, :state, :alias)
     end
 
     def route_name
       Rails.application.routes.router.recognize(request) do |route, _|
-        return route.name.to_sym
+        return route.name.to_sym  if route.name
       end
     end
 end

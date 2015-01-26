@@ -6,6 +6,7 @@ Rails.application.routes.draw do
                        passwords: 'users/passwords'
                    }
 
+  get 'pages/:alias' => 'pages#show', as: :alias_page, constraints: { alias: /[A-Za-z]+[A-Za-z0-9]+/ }
   resources :pages
 
   scope :blog, as: :blog do
