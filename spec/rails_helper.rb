@@ -10,6 +10,7 @@ require 'faker'
 # Capybara
 require 'capybara/rails'
 require 'capybara/poltergeist'
+Capybara.default_driver    = :poltergeist
 Capybara.javascript_driver = :poltergeist
 
 # Add additional requires below this line. Rails is not loaded until this point!
