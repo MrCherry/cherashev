@@ -1,0 +1,18 @@
+= simple_form_for(@page) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :text, as: :wysihtml5
+
+  .form-inputs
+    .row
+      .col-xs-3
+        = f.input :category, as: :select, collection: categories_options
+      .col-xs-3
+        = f.input :state, as: :select, collection: states_options
+
+    br
+
+    .form-actions
+      = f.button :submit, 'Сохранить'

@@ -20,4 +20,26 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 ru:
-  hello: "Hello world"
+  unauthorized: "Нет у вас доступа, я вижу."
+  activerecord:
+    successful:
+      messages:
+        created: ":model sdasd"
+    models:
+      page:
+        one: "Страница"
+        few: "Страницы"
+        many: "Страниц"
+        other: "Страниц"
+    attributes:
+      page:
+        category: "Категория"
+        state: "Статус"
+        categories:
+          static: "Обычная"
+          blog: "Пост"
+        states:
+          draft: "Черновик"
+          published: "Опубликовано"
+          archived: "Архив"
+          deleted: "Удалённая"

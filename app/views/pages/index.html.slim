@@ -1,0 +1,15 @@
+h1 Блог
+
+br
+
+- @pages.each do |page|
+  == render 'preview', page: page
+
+br
+
+.text-center
+  == paginate @pages
+
+/br
+
+/= link_to 'New Page', new_page_path

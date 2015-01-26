@@ -1,0 +1,17 @@
+.page-preview
+  h3 = link_to page.title, page
+
+  - if can? :manage, page
+    .btn-group.pull-right
+      = link_to 'Редактировать', edit_page_path(page), class: 'btn btn-default btn-xs'
+      = link_to 'Удалить', page, method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger btn-xs'
+
+  p.text-muted
+    small = l(page.updated_at, format: :short)
+
+  p == truncate_html(page.text, length: 300, escape: false)
+  br
+  = link_to 'Подробнее', page, class: 'btn btn-primary'
+
+br
+br

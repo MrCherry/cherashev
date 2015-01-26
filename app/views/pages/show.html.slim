@@ -1,0 +1,22 @@
+h1 = @page.title
+
+br
+
+- if can? :manage, @page
+  .btn-group.pull-right
+    = link_to 'Редактировать', edit_page_path(@page), class: 'btn btn-default btn-xs'
+    = link_to 'Удалить', @page, method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger btn-xs'
+
+p
+  small
+    = l @page.updated_at, format: :short
+
+br
+
+article
+  = @page.text.html_safe
+
+br
+
+p
+  = link_to 'Назад', pages_path, class: 'btn btn-default'

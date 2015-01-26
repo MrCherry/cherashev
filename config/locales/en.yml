@@ -20,4 +20,20 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  unauthorized: "Got access?"
+  activerecord:
+    models:
+      page:
+        one: "Page"
+        few: "Pages"
+        many: "Pages"
+        other: "Pages"
+    attributes:
+      page:
+        categories:
+          common: "Common"
+          post: "Post"
+        states:
+          draft: "Draft"
+          published: "Published"
+          archived: "Archived"
