@@ -88,9 +88,11 @@ gem 'cancancan'
 # typus
 # gem 'activeadmin', github: 'activeadmin'
 
-gem 'quiet_assets', group: :development
+gem 'faker'
 
 group :development, :test do
+  gem 'quiet_assets'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug'
 
@@ -108,7 +110,6 @@ group :development, :test do
   # gem 'selenium-webdriver'
   gem 'poltergeist'
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'database_cleaner'
   gem 'guard-rspec'
   gem 'simplecov'
