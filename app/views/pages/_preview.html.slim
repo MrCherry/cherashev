@@ -1,5 +1,5 @@
 .page-preview
-  h3 = link_to page.title, page
+  h3 = link_to page.title, path_for_page(page)
 
   - if can? :manage, page
     .btn-group.pull-right
@@ -11,7 +11,4 @@
 
   p == truncate_html(page.text, length: 300, escape: false)
   br
-  = link_to 'Подробнее', page, class: 'btn btn-primary'
-
-br
-br
+  = link_to 'Подробнее →', path_for_page(page), class: 'btn btn-default'

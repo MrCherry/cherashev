@@ -21,6 +21,10 @@
 
 en:
   unauthorized: "Got access?"
+  actions:
+    view: "View"
+    edit: "Edit"
+    delete: "Delete"
   activerecord:
     models:
       page:

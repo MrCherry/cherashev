@@ -1,0 +1,9 @@
+h1 Блог
+
+br
+
+- @pages.each do |page|
+  == render 'preview', page: page
+
+.text-center
+  == paginate @pages

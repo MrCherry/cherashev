@@ -5,8 +5,8 @@ h1 Редактирование страницы
 br
 
 .btn-group
-  = link_to 'Назад', pages_path, class: 'btn btn-default'
-  = link_to 'Просмотреть', @page, class: 'btn btn-default'
+  = link_to '← Назад', back_path_for_page(@page), class: 'btn btn-default'
+  = link_to 'Просмотреть →', path_for_page(@page), class: 'btn btn-default'
 
 
 

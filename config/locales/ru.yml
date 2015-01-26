@@ -21,6 +21,10 @@
 
 ru:
   unauthorized: "Нет у вас доступа, я вижу."
+  actions:
+    view: "Смотреть"
+    edit: "Править"
+    delete: "Удалить"
   activerecord:
     successful:
       messages:
@@ -37,7 +41,7 @@ ru:
         state: "Статус"
         categories:
           static: "Обычная"
-          blog: "Пост"
+          blog: "Блог"
         states:
           draft: "Черновик"
           published: "Опубликовано"

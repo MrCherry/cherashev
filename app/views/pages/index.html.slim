@@ -1,15 +1,28 @@
-h1 Блог
+.pull-right
+  = link_to 'Новая страница', new_page_path, class: 'btn btn-default'
+
+h2 Все Страницы
 
 br
 
-- @pages.each do |page|
-  == render 'preview', page: page
-
-br
+table.table.table-hover.table-striped.table-responsive
+  thead
+    tr
+      th = Page.human_attribute_name :id
+      th = Page.human_attribute_name :title
+      th = Page.human_attribute_name :category
+      th = Page.human_attribute_name :state
+      th[colspan="2"]
+  tbody
+    - @pages.each do |page|
+      tr
+        td = page.id
+        td = link_to page.title, path_for_page(page)
+        td = t(page.category, scope: [:activerecord, :attributes, :page, :categories])
+        td = t(page.state, scope: [:activerecord, :attributes, :page, :states])
+        //td = link_to t('actions.view'), path_for_page(page), class: 'btn btn-xs btn-default'
+        td = link_to t('actions.edit'), edit_page_path(page), class: 'btn btn-xs btn-primary'
+        td = link_to t('actions.delete'), page, class: 'btn btn-xs btn-danger', method: :delete, data: {confirm: 'Вы уверены?'}
 
 .text-center
   == paginate @pages
-
-/br
-
-/= link_to 'New Page', new_page_path

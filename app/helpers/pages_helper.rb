@@ -16,4 +16,20 @@ module PagesHelper
       ]
     end
   end
+
+  def path_for_page(page)
+    if page.blog?
+      blog_post_path(page)
+    else
+      page_path(page)
+    end
+  end
+
+  def back_path_for_page(page)
+    if page.blog?
+      blog_path
+    else
+      pages_path
+    end
+  end
 end

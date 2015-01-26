@@ -1,12 +1,19 @@
 class PagesController < ApplicationController
 
-  load_and_authorize_resource
-
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:blog, :show]
   before_action :set_page, only: [:show, :edit, :update, :destroy]
+
+  before_action ->{
+    raise CanCan::AccessDenied if !action_name.in?(%w(blog show)) && cannot?(:manage, Page)
+  }
 
   # GET /pages
   def index
+    @pages = Page.latest.page(params[:page]).per(20)
+  end
+
+  # GET /blog
+  def blog
     @pages = Page.latest_blog_posts.page(params[:page]).per(5)
   end
 
@@ -52,14 +59,19 @@ class PagesController < ApplicationController
 
   private
     def set_page
-      if user_signed_in? && current_user.admin?
-        @page = Page.where(id: params[:id]).first!
-      else
-        @page = Page.published.where(id: params[:id]).first!
-      end
+      relation = Page.where(id: params[:id])
+      relation = relation.blog_posts if route_name == :blog_post
+      relation = relation.published unless can?(:manage, Page)
+      @page = relation.first!
     end
 
     def page_params
       params.require(:page).permit(:title, :text, :category, :state)
+    end
+
+    def route_name
+      Rails.application.routes.router.recognize(request) do |route, _|
+        return route.name.to_sym
+      end
     end
 end

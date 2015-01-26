@@ -4,9 +4,8 @@ class Page < ActiveRecord::Base
 
   validates :title, presence: true
 
+  scope :latest, ->{order('created_at DESC')}
   scope :published, ->{where(state: Page.states[:published])}
-
-  scope :latest_blog_posts, ->{
-    published.where(category: Page.categories[:blog]).order('created_at DESC')
-  }
+  scope :blog_posts, ->{where(category: Page.categories[:blog])}
+  scope :latest_blog_posts, ->{latest.published.blog_posts}
 end

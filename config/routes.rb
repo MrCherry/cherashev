@@ -8,11 +8,16 @@ Rails.application.routes.draw do
 
   resources :pages
 
+  scope :blog, as: :blog do
+    get '/' => 'pages#blog'
+    get '/:id' => 'pages#show', as: :post
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'pages#index'
+  root 'pages#blog'
   # root 'welcome#index'
 
   # Example of regular route:
