@@ -69,8 +69,8 @@ class FileUploader
     end
 
     def tmp_path
-      path = Pathname.new(Dir.tmpdir).join('uploads')
-      FileUtils::mkdir_p tmp_path.to_s unless path.exist?
+      path = Rails.root.join('tmp','uploads')
+      FileUtils::mkdir_p path.to_s unless path.exist?
       path
     end
 
