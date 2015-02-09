@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126042621) do
+ActiveRecord::Schema.define(version: 20150206092447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "file_uploads", force: :cascade do |t|
+    t.string   "original_file_name", null: false
+    t.string   "file_name",          null: false
+    t.string   "file_type"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "file_uploads", ["file_name"], name: "index_file_uploads_on_file_name", unique: true, using: :btree
+  add_index "file_uploads", ["file_type"], name: "index_file_uploads_on_file_type", using: :btree
+  add_index "file_uploads", ["original_file_name"], name: "index_file_uploads_on_original_file_name", using: :btree
 
   create_table "pages", force: :cascade do |t|
     t.string   "title"
