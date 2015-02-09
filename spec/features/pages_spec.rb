@@ -4,11 +4,13 @@ feature "Pages", :type => :feature, js: true do
   it "can be created by admin user" do
     user = create(:user)
     user.role = :admin
+    user.save
     login_as(user, scope: :user)
 
     visit new_page_path
 
     fill_in 'page_title', with: Faker::Lorem.sentence
+    fill_in 'page_alias', with: Faker::Lorem.word.downcase
 
     page.execute_script "$('iframe.wysihtml5-sandbox').contents().find('body').first().html('#{Faker::Lorem.sentence}')"
     page.execute_script "$('#page_category').val('blog')"
