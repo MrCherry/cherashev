@@ -1,7 +1,7 @@
 require 'rails_helper'
 require "cancan/matchers"
 
-RSpec.describe "pages/edit", :type => :view do
+RSpec.describe "pages/edit", :type => :view, skip: true do
   before(:each) do
     @page = assign(:page, Page.create!(
       :title => "MyString",
