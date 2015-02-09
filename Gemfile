@@ -37,8 +37,11 @@ gem 'rails_layout', group: :development
 gem 'slim-rails'
 gem 'html2slim', group: :development
 
-gem 'bootstrap-wysihtml5-rails', :git => 'git://github.com/Nerian/bootstrap-wysihtml5-rails.git'
+gem 'bootstrap-wysihtml5-rails'
 gem 'simple_form'
+
+# Decorators
+gem 'draper'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

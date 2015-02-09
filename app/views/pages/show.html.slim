@@ -10,8 +10,7 @@ h1 = @page.title
 
 - if @page.blog?
   p
-    small
-      = l @page.updated_at, format: :short
+    small = @page.publication_status
 - else
   br
 

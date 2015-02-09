@@ -7,7 +7,7 @@
       = link_to 'Удалить', page, method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger btn-xs'
 
   p.text-muted
-    small = l(page.updated_at, format: :short)
+    small = page.publication_status
 
   p == truncate_html(page.text, length: 300, escape: false)
   br

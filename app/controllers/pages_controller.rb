@@ -1,20 +1,17 @@
 class PagesController < ApplicationController
 
   before_action :authenticate_user!, except: [:blog, :show]
+  before_action ->{ raise CanCan::AccessDenied if !action_name.in?(%w(blog show)) && cannot?(:manage, Page) }
   before_action :set_page, only: [:show, :edit, :update, :destroy]
-
-  before_action ->{
-    raise CanCan::AccessDenied if !action_name.in?(%w(blog show)) && cannot?(:manage, Page)
-  }
 
   # GET /pages
   def index
-    @pages = Page.latest.page(params[:page]).per(20)
+    @pages = Page.latest.page(params[:page]).per(20).decorate
   end
 
   # GET /blog
   def blog
-    @pages = Page.latest_blog_posts.page(params[:page]).per(5)
+    @pages = Page.latest_blog_posts.page(params[:page]).per(5).decorate
   end
 
   # GET /pages/1
@@ -62,7 +59,7 @@ class PagesController < ApplicationController
       relation = Page.where("id = CAST(? AS numeric) OR alias = ?", params[:id].to_i, params[:id].to_s)
       relation = relation.blog_posts if route_name == :blog_post
       relation = relation.published unless can?(:manage, Page)
-      @page = relation.first!
+      @page = relation.first!.decorate
     end
 
     def page_params
