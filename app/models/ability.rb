@@ -8,9 +8,11 @@ class Ability
     if user.admin?
       can :manage, :all
       can :manage, Page
+      can :manage, FileUpload
     else
       can :read, :all
       can :read, Page
+      cannot :read, FileUpload
     end
 
     # The first argument to `can` is the action you are giving the user 
