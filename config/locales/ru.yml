@@ -35,6 +35,11 @@ ru:
         few: "Страницы"
         many: "Страниц"
         other: "Страниц"
+      page:
+        one: "Файл"
+        few: "Файла"
+        many: "Файлов"
+        other: "Файлы"
     attributes:
       page:
         category: "Категория"
@@ -48,3 +53,14 @@ ru:
           published: "Опубликовано"
           archived: "Архив"
           deleted: "Удалённая"
+      file_upload:
+        name: "Название"
+        file: "Выберите файл"
+        file_name: "Имя файла"
+        file_type: "Тип файла"
+        state: "Статус"
+        states:
+          draft: "Черновик"
+          published: "Опубликовано"
+          archived: "Архив"
+          deleted: "Удалён"
