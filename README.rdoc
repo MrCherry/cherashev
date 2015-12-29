@@ -1,4 +1,6 @@
 == cherashev.com
 
+{<img src="https://badges.gitter.im/MrCherry/cherashev.svg" alt="Join the chat at https://gitter.im/MrCherry/cherashev">}[https://gitter.im/MrCherry/cherashev?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge]
+
 This is my personal website.
 
