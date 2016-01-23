@@ -16,3 +16,5 @@ secrets.yml
 coverage
 .capistrano
 public/uploads
+public/assets
+bin
