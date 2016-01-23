@@ -1,0 +1,65 @@
+---
+- hosts: all
+  gather_facts: no
+  roles:
+    - { role: apt_proxy, when: use_apt_proxy }
+  tasks:
+    - apt: update_cache=yes
+
+- hosts: postgresql
+  roles:
+    - role: postgresql
+      name: postgresql
+
+- hosts: redis
+  roles:
+    - role: redis
+      name: redis
+
+- hosts: application
+  handlers:
+  roles:
+    - role: base
+      tags: base
+    - role: ruby
+      tags: ruby
+    - role: runit
+      tags: runit
+    - role: nginx
+      name: nginx
+    - role: puma
+      name: puma
+    - role: swap
+      name: swap
+    - role: webserver
+      name: webserver
+    - role: logrotate
+      name: logrotate
+      logrotate_scripts:
+        - name: nginx
+          path: /var/log/nginx/*.log
+          options:
+            - daily
+            - missingok
+            - compress
+            - delaycompress
+            - sharedscripts
+            - notifempty
+            - create 640 {{ username }} adm
+            - rotate 31
+          scripts:
+            postrotate: "[ -f /run/nginx.pid ] && kill -HUP `cat /run/nginx.pid`"
+            prerotate: "if [ -d /etc/logrotate.d/httpd-prerotate ]; then \\\n      run-parts /etc/logrotate.d/httpd-prerotate; \\\n    fi\\"
+        - name: cherashev
+          path: "{{ app_path }}/log/*.log"
+          options:
+            - daily
+            - missingok
+            - compress
+            - delaycompress
+            - sharedscripts
+            - notifempty
+            - create 640 {{ username }} {{ username }}
+            - rotate 31
+          scripts:
+            postrotate: "sudo /usr/bin/sv restart {{ app_name }}-puma"

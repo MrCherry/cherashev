@@ -1,0 +1,21 @@
+---
+- include: remote.yml
+  when: target == 'server'
+
+- name: Create and migrate DB
+  when: target == 'virtualbox'
+  command: /bin/bash -l -c 'rake db:create db:migrate' chdir={{ app_path }}
+  sudo_user: '{{ username }}'
+  ignore_errors: yes
+  tags:
+    - rails
+    - db
+
+- name: DB seed
+  when: target == 'virtualbox'
+  command: /bin/bash -l -c 'rake db:seed' chdir={{ app_path }}
+  sudo_user: '{{ username }}'
+  ignore_errors: yes
+  tags:
+    - rails
+    - db

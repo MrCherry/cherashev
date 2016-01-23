@@ -1,0 +1,5 @@
+- name: Install runit
+  apt: name=runit state=latest
+
+- name: Start runit
+  service: name=runsvdir state=started
