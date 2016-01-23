@@ -8,6 +8,5 @@ addons:
 before_script:
   - psql -c 'create database cherashev_test;' -U postgres
 script: 
-  - RAILS_ENV=test bundle exec rake db:migrate
-  - bundle exec rake db:test:prepare
+  - RAILS_ENV=test bundle exec rake db:schema:load
   - bundle exec rspec spec/
