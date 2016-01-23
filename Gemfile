@@ -47,16 +47,10 @@ gem 'draper'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-gem 'unicorn'
+# gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-# Use Capistrano for deployment
-gem 'capistrano', require: false
-gem 'capistrano-rails', require: false
-gem 'capistrano-rvm', require: false
-gem 'capistrano3-unicorn', require: false
-gem 'net-ssh'
+# Use Puma as the app server
+gem 'puma'
 
 # i18n
 gem 'rails-i18n'
@@ -91,9 +85,25 @@ gem 'cancancan'
 # typus
 # gem 'activeadmin', github: 'activeadmin'
 
+# States
+gem 'state_machine'
+
+# Slug generation
+gem 'friendly_id'
+
 gem 'faker'
 
 group :development, :test do
+  # Use Capistrano for deployment
+  # gem 'capistrano-rails', group: :development
+  # Use Capistrano for deployment
+  gem 'capistrano', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rvm', require: false
+# gem 'capistrano3-unicorn', require: false
+  gem 'capistrano-pumaio', require: false
+  gem 'net-ssh'
+
   gem 'quiet_assets'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -106,11 +116,12 @@ group :development, :test do
   gem 'spring'
 
   # Testing
-  gem 'guard'
   gem 'spring-commands-rspec'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
+  gem 'capybara-webkit'
   gem 'poltergeist'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
