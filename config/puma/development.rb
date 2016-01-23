@@ -1,22 +1,28 @@
-environment ENV['RAILS_ENV']
-# directory '/cherashev'
+rails_env = ENV['RAILS_ENV'] || 'development'
+app_dir = File.expand_path("../../../", __FILE__)
+tmp_dir = "#{app_dir}/tmp"
+
+environment rails_env
+directory app_dir
 
 threads 0,16
 workers 2
 
-# preload_app!
+preload_app!
 
-pidfile File.expand_path('../tmp/pids/puma.development.pid', __FILE__)
-
-port '3000'
+pidfile "#{tmp_dir}/pids/puma.#{rails_env}.pid"
+ 
+bind "unix://#{tmp_dir}/sockets/puma.#{rails_env}.sock"
 
 prune_bundler
 
 restart_command 'bundle exec bin/puma'
 
 on_worker_boot do
-  require 'active_record'
-  config_path = File.expand_path('../config/database.yml', __FILE__)
-  ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
-  ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || YAML.load_file(config_path)[ENV['RAILS_ENV']])
+  # Don't bother having the master process hang onto older connections.
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.connection.disconnect!
+
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.establish_connection
 end

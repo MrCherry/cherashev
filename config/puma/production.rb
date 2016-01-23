@@ -1,14 +1,18 @@
-environment ENV['RAILS_ENV']
-directory '/home/deployer/cherashev'
+rails_env = ENV['RAILS_ENV'] || 'production'
+app_dir = '/home/deployer/cherashev'
+tmp_dir = "#{app_dir}/tmp"
+
+environment rails_env
+directory app_dir
 
 threads 0,16
 workers 8
 
 preload_app!
 
-pidfile '/home/deployer/cherashev/tmp/pids/puma.production.pid'
-
-bind 'unix:///full/path/to/your/project/tmp/puma.sock'
+pidfile "#{tmp_dir}/pids/puma.#{rails_env}.pid"
+ 
+bind "unix://#{tmp_dir}/sockets/puma.#{rails_env}.sock"
 
 prune_bundler
 
@@ -16,7 +20,7 @@ restart_command 'bundle exec bin/puma'
 
 on_worker_boot do
   require 'active_record'
-  config_path = File.expand_path('../config/database.yml', __FILE__)
+  config_path = File.expand_path('../../database.yml', __FILE__)
   ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
   ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || YAML.load_file(config_path)[ENV['RAILS_ENV']])
 end
