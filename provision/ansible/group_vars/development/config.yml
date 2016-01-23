@@ -1,0 +1,19 @@
+---
+rails_env: development
+target: virtualbox
+autoconf: true
+vm_memory: 1024
+vm_swap: 1024
+vm_cores: 2
+vm_share_type: nfs
+vm_ip: 192.168.20.60
+host:
+port:
+username: vagrant
+ruby_username: vagrant
+password: vagrant
+app_path: /cherashev
+path: /cherashev
+shared_path: /cherashev
+app_temp_path: /cherashev/tmp
+app_log_path: /cherashev/log

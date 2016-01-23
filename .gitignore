@@ -11,8 +11,9 @@
 /log/*
 !/log/.keep
 /tmp
-secrets.yml
 .idea
 coverage
 .capistrano
 public/uploads
+public/assets
+bin

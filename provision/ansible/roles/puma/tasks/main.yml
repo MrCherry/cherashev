@@ -1,0 +1,7 @@
+---
+- name: Add service folder
+  file: path=/etc/service/{{app_name}}-puma state=directory
+
+- name: Setup puma service
+  template: src=service.j2 dest=/etc/service/{{app_name}}-puma/run owner={{username}} group={{username}} mode=0774
+

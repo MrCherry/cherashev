@@ -1,0 +1,8 @@
+---
+- include: rvm.yml
+  when: ruby_install == 'rvm'
+
+- name: bundle install
+  when: target == 'virtualbox'
+  command: /bin/bash -l -c 'bundle install' chdir={{ app_path }}
+  sudo_user: '{{ rvm1_user }}'

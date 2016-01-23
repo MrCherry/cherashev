@@ -1,0 +1,104 @@
+---
+vm_name: cherashev
+git_branch: master
+vm_os: ubuntu/trusty64
+environments:
+  - development
+  - production
+package_bundles:
+  - curl
+  - graphics
+  - qt
+packages:
+  - curl
+  - libcurl3
+  - libcurl3-gnutls
+  - libcurl4-openssl-dev
+  - imagemagick
+  - qt5-default
+  - libqt5webkit5-dev
+manual_ruby_version: ruby-2.3.0
+server_name: cherashev
+rails_version: 4
+ruby_install: rvm
+ruby_version: 2.3.0
+ruby_gemset: cherashev
+environment_file: /cherashev/.envrc
+databases:
+  - postgresql
+  - redis
+background_jobs:
+postgresql_orm: activerecord
+mongodb_orm: none
+redis_orm: redis-rb
+sidekiq_command: sidekiq
+resque_command: rake resque:work
+server_type: nginx_puma
+git_url: git@courier99.voltmobi.com:yakitoriya/yakitoriya_cherashev.git
+
+app_name: '{{ vm_name }}'
+username: '{{ "vagrant" if target == "virtualbox" else app_name }}'
+group_name: '{{ username }}'
+
+user_home_path: '/home/{{ username }}'
+
+path: '{{ user_home_path }}/cherashev'
+
+ssl_certificate_path: /etc/nginx/ssl/{{ server_name }}.crt
+ssl_certificate_key_path: /etc/nginx/ssl/{{ server_name }}.key
+
+current_path: '{{ path }}/current'
+app_path: '{{ path if target == "virtualbox" else current_path }}'
+app_public_path: "{{ app_path }}/public"
+app_config_path: "{{ app_path }}/config"
+
+releases_path: '{{ path }}/releases'
+shared_path: '{{ path }}/shared'
+
+app_temp_path: "{{ shared_path }}/tmp"
+app_logs_path: "{{ shared_path }}/log"
+
+puma_sock_path: "{{ app_temp_path }}/sockets/puma.{{ rails_env }}.sock"
+puma_config_path: "{{ app_config_path }}/puma/{{ rails_env }}.rb"
+puma_pid_path: "{{ app_temp_path }}/pids/puma.{{ rails_env }}.pid"
+
+ruby_username: '{{ "root" if ruby_install == "package" else username }}'
+
+use_apt_proxy: false
+
+# Basic settings
+postgresql_version: 9.4
+postgresql_encoding: 'UTF-8'
+postgresql_locale: 'en_US.UTF-8'
+postgresql_timezone: 'W-SU'
+postgresql_timezone_abbreviations: 'Default'
+
+postgresql_admin_user: "postgres"
+postgresql_default_auth_method: "trust"
+
+postgresql_cluster_name: "main"
+postgresql_cluster_reset: false
+
+postgresql_ext_install_contrib: yes
+postgresql_ext_install_dev_headers: yes
+postgresql_ext_install_postgis: yes
+
+# List of databases to be created (optional)
+postgresql_databases:
+  - name: cherashev
+    hstore: yes        # flag to install the hstore extension on this database (yes/no)
+    postgis: yes       # flag to install the hstore extension on this database (yes/no)
+    uuid_ossp: yes     # flag to install the uuid-ossp extension on this database (yes/no)
+
+# List of users to be created (optional)
+postgresql_users:
+  - name: cherashev
+    pass: Oepar3Oodahxahx3
+    encrypted: no # denotes if the password is already encrypted.
+
+# List of user privileges to be applied (optional)
+postgresql_user_privileges:
+  - name: cherashev         # user name
+    db: cherashev           # database
+    priv: "ALL"                 # privilege string format: example: INSERT,UPDATE/table:SELECT/anothertable:ALL
+    role_attr_flags: "CREATEDB" # role attribute flags

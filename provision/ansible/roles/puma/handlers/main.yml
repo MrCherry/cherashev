@@ -1,0 +1,8 @@
+---
+- name: restart application
+  command: sudo /usr/bin/sv restart {{ puma_app_name }}-puma
+  sudo_user: "{{ username }}"
+  when: ("'application' in group_names") and (target == 'virtualbox')
+  ignore_errors: yes
+  tags:
+    - rails
