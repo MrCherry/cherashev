@@ -10,10 +10,9 @@ APP_ENV={{ rails_env }}
 source /home/{{ username }}/.rvm/scripts/rvm
 
 umask 0002
-CMD="RAILS_ENV={{ rails_env }} bundle exec bin/puma -C {{ app_path }}/config/puma/{{ rails_env }}.rb"
+CMD="RAILS_ENV={{ rails_env }} bundle exec puma -C {{ app_path }}/config/puma/{{ rails_env }}.rb"
 
 # Run
-echo "Running cherashev-puma"
 exec 2>&1
 cd $APP_ROOT
 exec chpst -u "${APP_USER}:${APP_GROUP}" $CMD
