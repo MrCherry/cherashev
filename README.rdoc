@@ -1,7 +1,0 @@
-== cherashev.com
-
-[![Test Coverage](https://codeclimate.com/github/MrCherry/cherashev/badges/coverage.svg)](https://codeclimate.com/github/MrCherry/cherashev/coverage)
-
-This is my personal website.
-
-
