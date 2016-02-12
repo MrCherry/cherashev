@@ -1,16 +1,20 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.0'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'execjs', platforms: :ruby
 gem 'therubyracer', platforms: :ruby
@@ -91,30 +95,28 @@ gem 'state_machine'
 # Slug generation
 gem 'friendly_id'
 
+# Fake data generation
 gem 'faker'
 
 group :development, :test do
-  # Use Capistrano for deployment
-  # gem 'capistrano-rails', group: :development
-  # Use Capistrano for deployment
   gem 'capistrano', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-rvm', require: false
-# gem 'capistrano3-unicorn', require: false
   gem 'capistrano-pumaio', require: false
   gem 'net-ssh'
-
   gem 'quiet_assets'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  # gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
 
+group :test do
   # Testing
   gem 'spring-commands-rspec'
   gem 'rspec-rails'
@@ -125,7 +127,6 @@ group :development, :test do
   gem 'poltergeist'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
-  gem 'guard-rspec'
   gem 'simplecov'
 end
 
