@@ -10,9 +10,13 @@ APP_ENV={{ rails_env }}
 source /home/{{ username }}/.rvm/scripts/rvm
 
 umask 0002
-CMD="RAILS_ENV={{ rails_env }} bundle exec puma -C {{ app_path }}/config/puma/{{ rails_env }}.rb"
+CMD="bundle exec puma -C ${APP_ROOT}/config/puma/${APP_ENV}.rb"
 
 # Run
 exec 2>&1
+rm -f "${APP_ROOT}/tmp/sockets/puma.${APP_ENV}.sock"
 cd $APP_ROOT
 exec chpst -u "${APP_USER}:${APP_GROUP}" $CMD
+
+
+

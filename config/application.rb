@@ -37,14 +37,11 @@ module Cherashev
       g.factory_girl dir: 'spec/factories'
     end
 
-    require 'redis-store' # HACK
-    config.cache_store = :redis_store,
-        {
-            host: 'localhost',
-            port: 6379,
-            db: 2,
-            namespace: 'cache',
-            expires_in: 30.minutes,
-        }
+    # Redis configuration
+    config.redis = Rails.application.config_for(:redis)
+    Redis.current = Redis.new(Rails.configuration.redis)
+
+    # Set cache store to redis
+    config.cache_store = :redis_store, config.redis
   end
 end

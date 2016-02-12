@@ -1,5 +1,5 @@
 rails_env = ENV['RAILS_ENV'] || 'development'
-app_dir = File.expand_path("../../../", __FILE__)
+app_dir = '/cherashev'
 tmp_dir = "#{app_dir}/tmp"
 
 environment rails_env
@@ -22,7 +22,7 @@ restart_command 'bundle exec bin/puma'
 # Logging
 stdout_redirect "#{app_dir}/log/puma.stdout.log", "#{app_dir}/log/puma.stderr.log", true
 
-activate_control_app
+# activate_control_app "unix://#{tmp_dir}/sockets/pumactl.#{rails_env}.sock"
 
 on_worker_boot do
   # Don't bother having the master process hang onto older connections.

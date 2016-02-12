@@ -22,7 +22,7 @@ restart_command 'bundle exec bin/puma'
 # Logging
 stdout_redirect "#{app_dir}/log/puma.stdout.log", "#{app_dir}/log/puma.stderr.log", true
 
-activate_control_app
+# activate_control_app "unix://#{tmp_dir}/sockets/pumactl.#{rails_env}.sock"
 
 on_worker_boot do
   require 'active_record'
