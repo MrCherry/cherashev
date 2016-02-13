@@ -102,7 +102,7 @@ group :development, :test do
   gem 'capistrano', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-rvm', require: false
-  gem 'capistrano-pumaio', require: false
+  # gem 'capistrano-pumaio', require: false
   gem 'net-ssh'
   gem 'quiet_assets'
 

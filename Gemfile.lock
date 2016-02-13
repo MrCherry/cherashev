@@ -58,13 +58,6 @@ GEM
     capistrano-bundler (1.1.4)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
-    capistrano-monit_runit (3.0.4)
-      activesupport (>= 3.0)
-      capistrano (~> 3.4)
-    capistrano-pumaio (3.0.3)
-      activesupport (>= 3.0)
-      capistrano (~> 3.4)
-      capistrano-monit_runit (~> 3.0.2)
     capistrano-rails (1.1.6)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
@@ -331,7 +324,6 @@ DEPENDENCIES
   bootstrap-wysihtml5-rails
   cancancan
   capistrano
-  capistrano-pumaio
   capistrano-rails
   capistrano-rvm
   capybara
