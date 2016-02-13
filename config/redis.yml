@@ -1,6 +1,6 @@
 default: &default
-  namespace: beacon
-  key: _beacon_session
+  namespace: cherashev
+  key: _cherashev_session
   pool: 5
   host: localhost
   port: 6379
