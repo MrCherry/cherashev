@@ -17,8 +17,6 @@ RSpec.feature "File uploads", type: :feature, js: true, driver: :selenium do
       sleep 1
     end
 
-    page.save_screenshot '/Users/drwg/1.png'
-
     expect(current_path).to eq file_upload_path(FileUpload.last)
   end
 end
