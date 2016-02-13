@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "FileUploads", type: :feature, js: true, driver: :selenium_chrome do
+RSpec.feature "File uploads", type: :feature, js: true, driver: :selenium do
   before :each do
     admin = create(:user)
     admin.role = :admin
@@ -16,6 +16,8 @@ RSpec.feature "FileUploads", type: :feature, js: true, driver: :selenium_chrome 
       first('input[type=submit]').click
       sleep 1
     end
+
+    page.save_screenshot '/Users/drwg/1.png'
 
     expect(current_path).to eq file_upload_path(FileUpload.last)
   end
