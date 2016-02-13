@@ -3,3 +3,4 @@ rails_env: production
 target: server
 host: 159.253.21.204
 username: deployer
+swap_size: 1024
