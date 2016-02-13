@@ -1,5 +1,5 @@
 rails_env = ENV['RAILS_ENV'] || 'production'
-app_dir = '/home/deployer/cherashev'
+app_dir = '/home/deployer/cherashev/current'
 tmp_dir = "#{app_dir}/tmp"
 
 environment rails_env

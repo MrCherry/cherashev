@@ -102,7 +102,7 @@ group :development, :test do
   gem 'capistrano', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-rvm', require: false
-  gem 'capistrano-pumaio', require: false
+  # gem 'capistrano-pumaio', require: false
   gem 'net-ssh'
   gem 'quiet_assets'
 
@@ -123,8 +123,8 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
-  gem 'capybara-webkit'
   gem 'poltergeist'
+  gem 'site_prism'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'simplecov'

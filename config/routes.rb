@@ -15,5 +15,7 @@ Rails.application.routes.draw do
     get '/:id' => 'pages#show', as: :post
   end
 
+  get 'welcome' => 'welcome#index'
+
   root 'pages#blog'
 end
