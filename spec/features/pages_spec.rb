@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "Pages", :type => :feature, js: true do
+feature "Pages", type: :feature, js: true, driver: :selenium do
   it "can be created by admin user" do
     user = create(:user)
     user.role = :admin
