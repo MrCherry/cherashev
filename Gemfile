@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '~> 4.2.0'
 
 # Use postgresql as the database for Active Record
-# gem 'pg'
-gem 'pg', '0.17.1', :platform => :jruby, :git => 'git://github.com/headius/jruby-pg.git', :branch => :master
+gem 'pg', platforms: :ruby
+gem 'activerecord-jdbcpostgresql-adapter', platform: :jruby
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
