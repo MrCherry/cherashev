@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '~> 4.2.0'
 
 # Use postgresql as the database for Active Record
-gem 'pg'
+# gem 'pg'
+gem 'pg', '0.17.1', :platform => :jruby, :git => 'git://github.com/headius/jruby-pg.git', :branch => :master
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -39,7 +40,7 @@ gem 'rails_layout', group: :development
 
 # Slim
 gem 'slim-rails'
-gem 'html2slim', group: :development
+# gem 'html2slim', group: :development
 
 gem 'bootstrap-wysihtml5-rails'
 gem 'simple_form'
@@ -129,4 +130,3 @@ group :test do
   gem 'database_cleaner'
   gem 'simplecov'
 end
-
