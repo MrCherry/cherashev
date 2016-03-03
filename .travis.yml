@@ -1,14 +1,14 @@
 language: ruby
 rvm:
   - 2.3.0
+  - rbx-3.19
 services:
   - postgresql
   - redis-server
-addons:	
+addons:
   postgresql: "9.4"
 before_script:
   - psql -c 'create database cherashev_test;' -U postgres
   - RAILS_ENV=test bundle exec rake db:schema:load
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-  
