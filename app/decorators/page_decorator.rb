@@ -1,15 +1,21 @@
-class PageDecorator < Draper::Decorator
-  delegate_all
-
+class PageDecorator < BaseDecorator
   def publication_status
     if published?
-      "Опубликовано #{updated_at}"
+      "#{state} #{updated_at}"
     else
-      "Не опубликовано  "
+      state
     end
   end
 
+  def state
+    I18n.t(object.state, scope: [:activerecord, :attributes, :page, :states])
+  end
+
   def updated_at
-    I18n::l(object.updated_at, format: :short)
+    I18n.l(object.updated_at, format: :short)
+  end
+
+  def category
+    I18n.t(object.category, scope: [:activerecord, :attributes, :page, :categories])
   end
 end

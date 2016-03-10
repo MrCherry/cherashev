@@ -5,7 +5,7 @@ tmp_dir = "#{app_dir}/tmp"
 environment rails_env
 directory app_dir
 
-threads 0,16
+threads 0, 16
 workers 2
 
 preload_app!
