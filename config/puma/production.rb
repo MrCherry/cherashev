@@ -6,13 +6,13 @@ environment rails_env
 directory app_dir
 
 threads 0,16
-workers 8
+workers 2
 
 preload_app!
 
 pidfile "#{tmp_dir}/pids/puma.#{rails_env}.pid"
 state_path "#{tmp_dir}/pids/puma.#{rails_env}.state"
- 
+
 bind "unix://#{tmp_dir}/sockets/puma.#{rails_env}.sock"
 
 prune_bundler
@@ -30,4 +30,3 @@ on_worker_boot do
   ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
   ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || YAML.load_file(config_path)[ENV['RAILS_ENV']])
 end
-

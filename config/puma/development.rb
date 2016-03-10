@@ -1,18 +1,20 @@
 rails_env = ENV['RAILS_ENV'] || 'development'
-app_dir = '/cherashev'
+vagrant = Dir.exists?('/cherashev')
+
+app_dir = (vagrant ? '/cherashev' : Dir.pwd)
 tmp_dir = "#{app_dir}/tmp"
 
 environment rails_env
 directory app_dir
 
-threads 0,16
+threads 0, 16
 workers 2
 
 preload_app!
 
 pidfile "#{tmp_dir}/pids/puma.#{rails_env}.pid"
 state_path "#{tmp_dir}/pids/puma.#{rails_env}.state"
- 
+
 bind "unix://#{tmp_dir}/sockets/puma.#{rails_env}.sock"
 
 prune_bundler
@@ -20,7 +22,9 @@ prune_bundler
 restart_command 'bundle exec bin/puma'
 
 # Logging
-stdout_redirect "#{app_dir}/log/puma.stdout.log", "#{app_dir}/log/puma.stderr.log", true
+if vagrant
+  stdout_redirect "#{app_dir}/log/puma.stdout.log", "#{app_dir}/log/puma.stderr.log", true
+end
 
 # activate_control_app "unix://#{tmp_dir}/sockets/pumactl.#{rails_env}.sock"
 
