@@ -1,25 +1,27 @@
 require 'rails_helper'
 
-RSpec.describe PageDecorator, :type => :decorator  do
-  let(:page) {
-    page = create(:page)
-    some_date = Time.zone.now
-    page.updated_at = some_date
-    page.decorate
-  }
-  subject { PageDecorator.first }
+RSpec.describe PageDecorator, type: :decorator  do
+  let(:some_datetime)     { Time.zone.now }
+  let(:page)              { create(:page, updated_at: some_datetime).decorate }
+  let(:not_pubished_page) { create(:page, updated_at: some_datetime, state: Page.states[:draft]).decorate }
 
-  context 'published' do
-    it 'shows published date' do
-      page.state = Page.states[:published]
-      expect(page.publication_status).to end_with page.updated_at
-    end
+  it 'decorates state' do
+    expect(page.state).to eq I18n.t(page.object.state, scope: [:activerecord, :attributes, :page, :states])
   end
 
-  context 'unpublished' do
-    it 'does not show published date' do
-      page.state = Page.states[:draft]
-      expect(page.publication_status).not_to end_with page.updated_at
-    end
+  it 'decorates category' do
+    expect(page.category).to eq I18n.t(page.object.category, scope: [:activerecord, :attributes, :page, :categories])
+  end
+
+  it 'decorates updated_at' do
+    expect(page.updated_at).to eq I18n.l(page.object.updated_at, format: :short)
+  end
+
+  it 'published shows publication date' do
+    expect(page.publication_status).to eq "#{page.state} #{page.updated_at}"
+  end
+
+  it 'unpublished does not show publication date' do
+    expect(not_pubished_page.publication_status).not_to include not_pubished_page.updated_at
   end
 end

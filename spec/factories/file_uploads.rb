@@ -4,5 +4,4 @@ FactoryGirl.define do
     file_name {Digest::MD5.hexdigest(Time.zone.now.to_s)}
     file_type "image/jpeg"
   end
-
 end

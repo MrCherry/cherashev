@@ -1,31 +1,18 @@
 doctype html
 html
   head
-    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
-    title= content_for?(:title) ? yield(:title) : 'cherashev.com'
-    meta name="description" content="#{content_for?(:description) ? yield(:description) : 'cherashev.com'}"
-    == stylesheet_link_tag "application", :media => 'all', 'data-turbolinks-track' => true
-    == javascript_include_tag 'application', 'data-turbolinks-track' => true
-    == csrf_meta_tags
-
+    = render 'layouts/head'
   body
-
     .container.wrapper
-
       header
-        == render 'layouts/navigation'
-
+        = render 'layouts/navigation'
       main[role="main"]
         .row
           .col-sm-12
-            == render 'layouts/messages'
+            = render 'layouts/messages'
         .row
           .col-sm-12
-            == yield
-
+            = yield
       #footer-pusher
-
     footer
-      p.text-center.text-muted.small &copy; 2015 Фёдор Черашев
-
-
+      p.text-center.text-muted.small &copy; #{Time.zone.now.year} Фёдор Черашев

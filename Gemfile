@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 4.2.5.2'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -90,10 +90,10 @@ gem 'cancancan'
 # gem 'activeadmin', github: 'activeadmin'
 
 # States
-gem 'state_machine'
+# gem 'state_machine'
 
 # Slug generation
-gem 'friendly_id'
+# gem 'friendly_id'
 
 # Fake data generation
 gem 'faker'
@@ -117,7 +117,6 @@ group :development, :test do
 end
 
 group :test do
-  # Testing
   gem 'spring-commands-rspec'
   gem 'rspec-rails'
   gem 'capybara'
@@ -129,4 +128,3 @@ group :test do
   gem 'database_cleaner'
   gem 'simplecov'
 end
-

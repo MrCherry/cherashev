@@ -1,7 +1,6 @@
 class PagesController < ApplicationController
-
   before_action :authenticate_user!, except: [:blog, :show]
-  before_action ->{ raise CanCan::AccessDenied if !action_name.in?(%w(blog show)) && cannot?(:manage, Page) }
+  before_action :check_access
   before_action :set_page, only: [:show, :edit, :update, :destroy]
 
   # GET /pages
@@ -49,26 +48,32 @@ class PagesController < ApplicationController
 
   # DELETE /pages/1
   def destroy
-    # @page.destroy
     @page.update_attribute(:state, Page.states[:deleted])
     redirect_to pages_url, notice: 'Страница успешно удалена.'
   end
 
   private
-    def set_page
-      relation = Page.where("id = CAST(? AS numeric) OR alias = ?", params[:id].to_i, params[:id].to_s)
-      relation = relation.blog_posts if route_name == :blog_post
-      relation = relation.published unless can?(:manage, Page)
-      @page = relation.first!.decorate
-    end
 
-    def page_params
-      params.require(:page).permit(:title, :text, :category, :state, :alias)
-    end
+  def set_page
+    relation = Page.where("id = CAST(? AS numeric) OR alias = ?", params[:id].to_i, params[:id].to_s)
+    relation = relation.blog_posts if route_name == :blog_post
+    relation = relation.published unless can?(:manage, Page)
+    @page = relation.first!.decorate
+  end
 
-    def route_name
-      Rails.application.routes.router.recognize(request) do |route, _|
-        return route.name.to_sym  if route.name
-      end
+  def page_params
+    params.require(:page).permit(:title, :text, :category, :state, :alias)
+  end
+
+  def route_name
+    Rails.application.routes.router.recognize(request) do |route, _|
+      return route.name.to_sym if route.name
     end
+  end
+
+  def check_access
+    if !action_name.in?(%w(blog show)) && cannot?(:manage, Page)
+      raise CanCan::AccessDenied
+    end
+  end
 end

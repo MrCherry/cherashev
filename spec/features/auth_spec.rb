@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "Auth", type: :feature, js: true, driver: :selenium do
+RSpec.feature "Auth", type: :feature, js: true, driver: :selenium do
   context 'sign_in form' do
     it "signs in if given credentials are valid" do
       password = Faker::Internet.password(8)
@@ -24,7 +24,7 @@ feature "Auth", type: :feature, js: true, driver: :selenium do
       fill_in 'user_password', with: Faker::Internet.password(8)
 
       click_button 'Войти'
-      
+
       expect(page).to have_text 'Неверный email или пароль.'
     end
   end
