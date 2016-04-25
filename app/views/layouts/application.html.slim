@@ -16,5 +16,3 @@ html
       #footer-pusher
     footer
       p.text-center.text-muted.small &copy; #{Time.zone.now.year} Фёдор Черашев
-    - if Rails.env.production?
-      = render 'layouts/google_analytics'
