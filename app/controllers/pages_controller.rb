@@ -48,7 +48,7 @@ class PagesController < ApplicationController
 
   # DELETE /pages/1
   def destroy
-    @page.update_attribute(:state, Page.states[:deleted])
+    @page.safe_delete
     redirect_to pages_url, notice: 'Страница успешно удалена.'
   end
 
