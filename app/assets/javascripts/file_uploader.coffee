@@ -50,7 +50,7 @@ class FileUploader
     @_request.open('POST', @_url, true)
     @_request.setRequestHeader('Content-Type', 'application/octet-stream')
     @_request.overrideMimeType('application/octet-stream')
-    @_request.setRequestHeader( 'X-CSRF-Token', @_csrf_token )
+    @_request.setRequestHeader('X-CSRF-Token', @_csrf_token )
 
     if @file.size > @_chunk_size
       @_request.setRequestHeader(
@@ -65,6 +65,7 @@ class FileUploader
     @on_progress()
     @submit_button.attr('disabled', true)
     @progress_bar.slideToggle()
+    XMLHttpRequest.active = true
 
   on_progress: ->
     percentage = @_get_upload_percentage()
@@ -80,12 +81,14 @@ class FileUploader
     if @success == true
       @form.slideUp()
       setTimeout( ->
+        XMLHttpRequest.active = false
         document.location = Routes.file_upload_path(self.file_upload_id)
         self.form.slideDown()
-        self.form.html('<h3>Файл успешншно загружен. Перенаправление на страницу файла...</h3>')
+        self.form.html('<h3>Файл успешно загружен. Перенаправление на страницу файла...</h3>')
       , 500)
     else
       setTimeout( ->
+        XMLHttpRequest.active = false
         alert('Ошибка загрузки файла!')
         self.submit_button.removeAttr('disabled')
         self.progress_bar.slideToggle()

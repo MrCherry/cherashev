@@ -7,6 +7,7 @@ Rails.application.routes.draw do
              }
 
   resources :pages
+
   resources :file_uploads
   get 'download/:file_name(.:format)' => 'file_uploads#download', as: 'download_file_upload'
 

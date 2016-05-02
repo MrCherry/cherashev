@@ -17,11 +17,11 @@ packages:
   - imagemagick
   - qt5-default
   - libqt5webkit5-dev
-manual_ruby_version: ruby-2.3.0
+manual_ruby_version: ruby-2.3.1
 server_name: cherashev
 rails_version: 4
 ruby_install: rvm
-ruby_version: 2.3.0
+ruby_version: 2.3.1
 ruby_gemset: cherashev
 environment_file: /cherashev/.envrc
 databases:

@@ -1,7 +1,7 @@
 class FileUploader
   attr_reader :original_file_name, :file_type, :upload_id, :file_upload
 
-  def initialize(file_name:,file_type:,upload_id:,chunk:,content_range_header:)
+  def initialize(file_name:, file_type:, upload_id:, chunk:, content_range_header:)
     @original_file_name = file_name
     @file_type = file_type
     @upload_id = upload_id
