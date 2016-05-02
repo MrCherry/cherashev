@@ -1,9 +1,14 @@
 ru:
+  file_uploads:
+    destroy:
+      notice: 'Файл был успешно удалён.'
   unauthorized: "Нет у вас доступа, я вижу."
   actions:
     view: "Смотреть"
     edit: "Править"
     delete: "Удалить"
+    save: "Сохранить"
+    back: "Назад"
   activerecord:
     successful:
       messages:

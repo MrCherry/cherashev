@@ -1,6 +1,6 @@
 module PagesHelper
   def categories_options
-    Page.categories.map do |category, i|
+    Page.categories.map do |category, _|
       [
           t(category.to_sym, scope: [:activerecord, :attributes, :page, :categories]),
           category
@@ -9,7 +9,7 @@ module PagesHelper
   end
 
   def states_options
-    Page.states.map do |state, i|
+    Page.states.map do |state, _|
       [
           t(state.to_sym, scope: [:activerecord, :attributes, :page, :states]),
           state

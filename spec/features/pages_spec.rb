@@ -1,11 +1,8 @@
 require 'rails_helper'
 
-RSpec.feature "Pages", type: :feature, js: true, driver: :selenium do
+RSpec.feature "Pages", type: :feature, js: true do
   it "can be created by admin user" do
-    user = create(:user)
-    user.role = :admin
-    user.save
-    login_as(user, scope: :user)
+    login_as(create(:user, role: :admin))
 
     visit new_page_path
 
@@ -16,14 +13,14 @@ RSpec.feature "Pages", type: :feature, js: true, driver: :selenium do
     page.execute_script "$('#page_category').val('blog')"
     page.execute_script "$('#page_state').val('published')"
 
-    click_button 'Сохранить'
+    click_button I18n.t('actions.save')
 
     expect(current_path).to eq(page_path(Page.last.id))
   end
 
   it "can't be created by common user" do
-    login_as(create(:user), scope: :user)
+    login_as(create(:user))
     visit new_page_path
-    expect(page).to have_text "Нет у вас доступа, я вижу."
+    expect(page).to have_text I18n.t('unauthorized')
   end
 end
