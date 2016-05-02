@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Auth", type: :feature, js: true, driver: :selenium do
+RSpec.feature "Auth", type: :feature do
   context 'sign_in form' do
     it "signs in if given credentials are valid" do
       password = Faker::Internet.password(8)
