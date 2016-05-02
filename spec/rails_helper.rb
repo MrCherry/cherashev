@@ -1,21 +1,37 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
+
+# Simplecov
+require 'simplecov'
+SimpleCov.start
+
+require 'rspec/rails'
 require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
-require 'rspec/rails'
 
 # Faker
 require 'faker'
 
 # Capybara
 require 'capybara/rails'
-require 'capybara/poltergeist'
-Capybara.default_driver    = :poltergeist
-Capybara.javascript_driver = :poltergeist
 
-Capybara.register_driver :selenium_chrome do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+# Selenium
+Capybara.register_driver :selenium do |app|
+  profile = Selenium::WebDriver::Firefox::Profile.new
+  profile["download.default_directory"] = DownloadHelper::PATH.to_s
+  Capybara::Selenium::Driver.new(app, browser: :firefox, profile: profile)
 end
+Capybara.javascript_driver = :selenium
+
+# Poltergeist driver
+# require 'capybara/poltergeist'
+# Capybara.default_driver    = :poltergeist
+# Capybara.javascript_driver = :poltergeist
+
+# Selenium chrome driver
+# Capybara.register_driver :selenium_chrome do |app|
+#   Capybara::Selenium::Driver.new(app, :browser => :chrome)
+# end
 
 # Add additional requires below this line. Rails is not loaded until this point!
 

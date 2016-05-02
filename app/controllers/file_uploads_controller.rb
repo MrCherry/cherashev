@@ -1,5 +1,5 @@
 class FileUploadsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:download]
   before_action :set_file_upload, only: [:show, :edit, :update, :destroy]
 
   # GET /file_uploads
@@ -49,7 +49,7 @@ class FileUploadsController < ApplicationController
   # DELETE /file_uploads/1
   def destroy
     @file_upload.destroy
-    redirect_to file_uploads_url, notice: 'File upload was successfully destroyed.'
+    redirect_to file_uploads_url, notice: t('.notice')
   end
 
   private
@@ -60,6 +60,6 @@ class FileUploadsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def file_upload_params
-      params.require(:file_upload).permit(:file_name)
+      params.require(:file_upload).permit(:file_name, :file_type, :upload_id)
     end
 end

@@ -1,9 +1,14 @@
 en:
+  file_uploads:
+    destroy:
+      notice: 'File upload was successfully destroyed.'
   unauthorized: "Got access?"
   actions:
     view: "View"
     edit: "Edit"
     delete: "Delete"
+    save: "Save"
+    back: "Back"
   activerecord:
     models:
       page:
