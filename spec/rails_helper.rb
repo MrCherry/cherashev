@@ -6,6 +6,10 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'simplecov'
 SimpleCov.start
 
+# CodeClimate
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
+
 require 'rspec/rails'
 require 'spec_helper'
 
@@ -18,7 +22,7 @@ require 'capybara/rails'
 # Selenium
 Capybara.register_driver :selenium do |app|
   profile = Selenium::WebDriver::Firefox::Profile.new
-  profile["download.default_directory"] = DownloadHelper::PATH.to_s
+  profile['download.default_directory'] = DownloadHelper::PATH.to_s
   Capybara::Selenium::Driver.new(app, browser: :firefox, profile: profile)
 end
 Capybara.javascript_driver = :selenium

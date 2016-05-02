@@ -12,8 +12,10 @@ engines:
       languages:
       - ruby
       - javascript
+      - python
+      - php
   eslint:
-    enabled: false
+    enabled: true
   fixme:
     enabled: true
   rubocop:
@@ -21,15 +23,18 @@ engines:
 ratings:
   paths:
   - Gemfile.lock
-  - "**.css"
-  - "**.scss"
   - "**.erb"
   - "**.haml"
   - "**.rb"
+  - "**.rhtml"
   - "**.slim"
   - "**.coffee"
+  - "**.inc"
   - "**.js"
   - "**.jsx"
+  - "**.module"
+  - "**.php"
+  - "**.py"
 exclude_paths:
 - config/
 - db/
