@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, :type => :model do
+RSpec.describe User, type: :model do
   context "roles" do
     it "returns two roles by default" do
       expect(User.roles).to eq({"visitor" => 0, "admin" => 1})
