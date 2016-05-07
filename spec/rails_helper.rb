@@ -2,9 +2,13 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 
-# Simplecov
+# Coverage
 require 'simplecov'
-SimpleCov.start
+RSpec.configure do |config|
+  if config.instance_variable_get(:@files_or_directories_to_run) == ['spec']
+    SimpleCov.start 'rails'
+  end
+end
 
 # CodeClimate
 require 'codeclimate-test-reporter'
@@ -81,4 +85,11 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
 end
