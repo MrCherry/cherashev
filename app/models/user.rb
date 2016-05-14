@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  enum role: [:visitor, :admin]
+  enum role: %i(visitor admin)
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
