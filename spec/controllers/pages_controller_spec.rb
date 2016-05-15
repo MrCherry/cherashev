@@ -123,5 +123,4 @@ RSpec.describe PagesController, type: :controller do
       expect(response).to redirect_to(pages_url)
     end
   end
-
 end
