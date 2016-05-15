@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe WelcomeController, :type => :controller do
-
+RSpec.describe WelcomeController, type: :controller do
   describe "GET index" do
     it "returns http success" do
       get :index
@@ -13,5 +12,4 @@ RSpec.describe WelcomeController, :type => :controller do
       expect(response).to render_template(layout: 'wip')
     end
   end
-
 end

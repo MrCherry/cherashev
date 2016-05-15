@@ -1,6 +1,6 @@
 class Page < ActiveRecord::Base
-  enum category: [:static, :blog]
-  enum state: [:draft, :published, :archived, :deleted]
+  enum category: %i(static blog)
+  enum state: %i(draft published archived deleted)
 
   validates :title, presence: true
   validates :alias, presence: true # TODO: friendly_id
