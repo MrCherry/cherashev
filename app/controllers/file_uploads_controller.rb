@@ -57,9 +57,4 @@ class FileUploadsController < ApplicationController
     def set_file_upload
       @file_upload = FileUpload.find(params[:id])
     end
-
-    # Only allow a trusted parameter "white list" through.
-    def file_upload_params
-      params.require(:file_upload).permit(:file_name, :file_type, :upload_id)
-    end
 end
