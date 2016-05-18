@@ -25,7 +25,7 @@ RSpec.feature "Auth", type: :feature do
 
       click_button 'Войти'
 
-      expect(page).to have_text 'Неверный email или пароль.'
+      expect(page).to have_text 'Неверный Email или пароль.'
     end
   end
 end
