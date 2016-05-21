@@ -4,7 +4,10 @@ ENV['RAILS_ENV'] ||= 'test'
 require 'simplecov'
 RSpec.configure do |config|
   if config.instance_variable_get(:@files_or_directories_to_run) == ['spec']
-    SimpleCov.start 'rails'
+    SimpleCov.start 'rails' do
+      add_group 'Decorators', 'app/decorators'
+      add_group 'Services', 'app/services'
+    end
   end
 end
 
@@ -47,6 +50,7 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   config.use_transactional_fixtures = false
   config.infer_spec_type_from_file_location!
+  config.infer_base_class_for_anonymous_controllers = false
 end
 
 Shoulda::Matchers.configure do |config|
