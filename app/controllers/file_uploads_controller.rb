@@ -42,7 +42,7 @@ class FileUploadsController < ApplicationController
     else
       render plain: '', status: :partial_content
     end
-  rescue Exception => e
+  rescue StandardError => _e
     render plain: '', status: :unprocessable_entity
   end
 

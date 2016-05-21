@@ -2,7 +2,10 @@ en:
   file_uploads:
     destroy:
       notice: 'File upload was successfully destroyed.'
-  unauthorized: "Got access?"
+  errors:
+    internal_server_error: "Oops. Server error."
+    access_denied: "Got access?"
+    not_found: "Not found"
   actions:
     view: "View"
     edit: "Edit"

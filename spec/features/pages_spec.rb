@@ -21,6 +21,6 @@ RSpec.feature "Pages", type: :feature, js: true do
   it "can't be created by common user" do
     login_as(create(:user))
     visit new_page_path
-    expect(page).to have_text I18n.t('unauthorized')
+    expect(page).to have_text I18n.t('errors.access_denied')
   end
 end
