@@ -12,6 +12,11 @@ ru:
     delete: "Удалить"
     save: "Сохранить"
     back: "Назад"
+  pages:
+    notices:
+      created: "Страница успешно создана."
+      updated:  "Страница успешно обновлена."
+      deleted:  "Страница успешно удалена."
   activerecord:
     successful:
       messages:

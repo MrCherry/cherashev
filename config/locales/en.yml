@@ -12,6 +12,11 @@ en:
     delete: "Delete"
     save: "Save"
     back: "Back"
+  pages:
+    notices:
+      created: "Page successfully created."
+      updated: "Page successfully updated."
+      deleted: "Page successfully deleted."
   activerecord:
     models:
       page:

@@ -31,7 +31,7 @@ class PagesController < ApplicationController
     @page = Page.new(page_params)
 
     if @page.save
-      redirect_to @page, notice: 'Страница успешно создана.'
+      redirect_to page_path(@page), notice: t('pages.notices.created')
     else
       render :new
     end
@@ -40,7 +40,7 @@ class PagesController < ApplicationController
   # PATCH/PUT /pages/1
   def update
     if @page.update(page_params)
-      redirect_to @page, notice: 'Страница успешно обновлена.'
+      redirect_to page_path(@page), notice: t('pages.notices.updated')
     else
       render :edit
     end
@@ -49,7 +49,7 @@ class PagesController < ApplicationController
   # DELETE /pages/1
   def destroy
     @page.safe_delete
-    redirect_to pages_url, notice: 'Страница успешно удалена.'
+    redirect_to pages_path, notice: t('pages.notices.deleted')
   end
 
   private
