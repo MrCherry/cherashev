@@ -122,7 +122,6 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
-  gem 'poltergeist'
   gem 'site_prism'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
