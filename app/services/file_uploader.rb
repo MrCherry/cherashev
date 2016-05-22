@@ -16,7 +16,7 @@ class FileUploader
       if create_file_upload_record!
         move_from_tmp_to_public
       else
-        remove_file(tmp_file_path)
+        self.class.remove_file(tmp_file_path)
       end
     end
   end
@@ -95,5 +95,4 @@ class FileUploader
         'a+b'
       end
     end
-
 end
