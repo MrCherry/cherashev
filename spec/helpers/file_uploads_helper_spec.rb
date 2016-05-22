@@ -1,15 +1,17 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the FileUploadsHelper. For example:
-#
-# describe FileUploadsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe FileUploadsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'download_link' do
+    let(:file_upload) { create :file_upload }
+
+    it 'return proper link' do
+      expected_link =
+        link_to file_upload.original_file_name,
+                download_file_upload_path(file_upload.file_name),
+                target: '_blank',
+                class: 'file-upload-download-link'
+
+      expect(helper.download_link(file_upload)).to eq expected_link
+    end
+  end
 end

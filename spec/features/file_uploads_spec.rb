@@ -65,7 +65,8 @@ RSpec.feature "File uploads", type: :feature, js: true do
 
     describe 'delete action' do
       let(:delete_button_xpath) { "//a[@data-method='delete' and contains(text(), '#{I18n.t('actions.delete')}')]" }
-      before(:each)     { visit file_upload_path(file_upload) }
+
+      before(:each) { visit file_upload_path(file_upload) }
 
       it 'is available on the show page' do
         expect(page).to have_selector(:xpath, delete_button_xpath)
@@ -80,14 +81,13 @@ RSpec.feature "File uploads", type: :feature, js: true do
       end
     end
 
-    describe 'download action', skip: true do
+    describe 'download action' do
       it 'is available for downloading' do
         visit new_file_upload_path
         upload_file_proc.call(valid_file)
         wait_for_xhr
         page.find('.file-upload-download-link').click
-        # expect(page.response_headers['Content-Type']).to eq('image/png')
-        # expect(DownloadHelper::download_content).to be_truthy
+        expect(DownloadHelper::download_content).to eq File.read(valid_file)
       end
     end
   end
