@@ -30,7 +30,7 @@ ru:
         one: "Страница"
         few: "Страницы"
         many: "Страниц"
-        other: "Страниц"
+        other: "Страницы"
       file_upload:
         one: "Файл"
         few: "Файла"
