@@ -11,15 +11,23 @@ table.table.table-hover.table-striped.table-responsive
       th = FileUpload.human_attribute_name :id
       th = FileUpload.human_attribute_name :file_name
       th = FileUpload.human_attribute_name :file_type
-      th[colspan="2"]
+      th colspan="2"
   tbody
     - @file_uploads.each do |file_upload|
       tr
         td = file_upload.id
         td = download_link(file_upload)
         td = link_to file_upload.file_type, file_upload
-        td = link_to t('actions.view'), file_upload, class: 'btn btn-xs btn-default'
-        td = link_to t('actions.delete'), file_upload, class: 'btn btn-xs btn-danger', method: :delete, data: {confirm: 'Вы уверены?'}
+        td
+          = link_to t('actions.view'),
+            file_upload,
+            class: 'btn btn-xs btn-default'
+        td
+          = link_to t('actions.delete'),
+            file_upload,
+            class: 'btn btn-xs btn-danger',
+            method: :delete,
+            data: {confirm: t('messages.are_you_sure')}
 
 .text-center
   == paginate @file_uploads

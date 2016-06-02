@@ -3,12 +3,18 @@
 
   - if can? :manage, page
     .btn-group.pull-right
-      = link_to 'Редактировать', edit_page_path(page), class: 'btn btn-default btn-xs'
-      = link_to 'Удалить', page, method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger btn-xs'
+      = link_to t('actions.edit'),
+        edit_page_path(page),
+        class: 'btn btn-default btn-xs'
+      = link_to t('actions.delete'),
+        page,
+        method: :delete,
+        data: {confirm: t('messages.are_you_sure')},
+        class: 'btn btn-danger btn-xs'
 
   p.text-muted
     small = page.publication_status
 
   p == truncate_html(page.text, length: 300, escape: false)
   br
-  = link_to 'Подробнее →', path_for_page(page), class: 'btn btn-default'
+  = link_to t('actions.more'), path_for_page(page), class: 'btn btn-default'

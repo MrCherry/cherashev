@@ -5,8 +5,14 @@ h1 = @page.title
 
 - if can? :manage, @page
   .btn-group.pull-right
-    = link_to 'Редактировать', edit_page_path(@page), class: 'btn btn-default btn-xs'
-    = link_to 'Удалить', @page, method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger btn-xs'
+    = link_to t('actions.edit'),
+      edit_page_path(@page),
+      class: 'btn btn-default btn-xs'
+    = link_to t('actions.delete'),
+      @page,
+      method: :delete,
+      data: {confirm: t('messages.are_you_sure')},
+      class: 'btn btn-danger btn-xs'
 
 - if @page.blog?
   p
@@ -27,4 +33,6 @@ article
   br
 
   p
-    = link_to '← Назад', back_path_for_page(@page), class: 'btn btn-default'
+    = link_to t('actions.back'),
+      back_path_for_page(@page),
+      class: 'btn btn-default'

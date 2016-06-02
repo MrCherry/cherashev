@@ -2,16 +2,20 @@ ru:
   file_uploads:
     destroy:
       notice: 'Файл был успешно удалён.'
+  messages:
+    are_you_sure: 'Вы уверены?'
   errors:
     internal_server_error: 'Упс. Ошибочка вышла...'
     access_denied: "Нет у вас доступа, я вижу."
     not_found: "Зачем искать несуществующее?"
   actions:
-    view: "Смотреть"
-    edit: "Править"
+    view: "Просмотреть →"
+    more: "Подробнее →"
+    edit: "Редактировать"
     delete: "Удалить"
     save: "Сохранить"
-    back: "Назад"
+    upload: "Загрузить"
+    back: "← Назад"
   pages:
     notices:
       created: "Страница успешно создана."
@@ -27,13 +31,15 @@ ru:
         few: "Страницы"
         many: "Страниц"
         other: "Страниц"
-      page:
+      file_upload:
         one: "Файл"
         few: "Файла"
         many: "Файлов"
         other: "Файлы"
     attributes:
       page:
+        id: "№"
+        title: "Название"
         category: "Категория"
         alias: "Псевдоним"
         state: "Статус"
@@ -46,6 +52,7 @@ ru:
           archived: "Архив"
           deleted: "Удалённая"
       file_upload:
+        id: "№"
         name: "Название"
         file: "Выберите файл"
         file_name: "Имя файла"

@@ -3,7 +3,11 @@ h3 = @file_upload.original_file_name
 
 - if can? :manage, @file_upload
   .btn-group.pull-right
-    = link_to 'Удалить', @file_upload, method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger btn-xs'
+    = link_to t('actions.delete'),
+      @file_upload,
+      method: :delete,
+      data: {confirm: t('messages.are_you_sure')},
+      class: 'btn btn-danger btn-xs'
 
 br
 
@@ -24,4 +28,4 @@ dl
 br
 
 p
-  = link_to '← Назад', file_uploads_path, class: 'btn btn-default'
+  = link_to t('actions.back'), file_uploads_path, class: 'btn btn-default'
