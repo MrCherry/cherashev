@@ -12,12 +12,12 @@
         = f.input :category,
                   as: :select,
                   collection: categories_options,
-                  selected: f.object.object.category
+                  selected: f.object.try(:object).try(:category)
       .col-xs-3
         = f.input :state,
                   as: :select,
                   collection: states_options,
-                  selected: f.object.object.state
+                  selected: f.object.try(:object).try(:state)
     br
 
     .form-actions
