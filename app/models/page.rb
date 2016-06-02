@@ -5,10 +5,10 @@ class Page < ActiveRecord::Base
   validates :title, presence: true
   validates :alias, presence: true # TODO: friendly_id
 
-  scope :latest, ->{order('created_at DESC')}
-  scope :published, ->{where(state: Page.states[:published])}
-  scope :blog_posts, ->{where(category: Page.categories[:blog])}
-  scope :latest_blog_posts, ->{latest.published.blog_posts}
+  scope :latest, -> { order('created_at DESC') }
+  scope :published, -> { where(state: Page.states[:published]) }
+  scope :blog_posts, -> { where(category: Page.categories[:blog]) }
+  scope :latest_blog_posts, -> { latest.published.blog_posts }
 
   def safe_delete
     update_attributes(state: Page.states[:deleted]) unless deleted?

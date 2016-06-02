@@ -5,7 +5,7 @@ class FileUpload < ActiveRecord::Base
 
   before_destroy :remove_file
 
-  scope :latest, ->{ order('created_at DESC') }
+  scope :latest, -> { order('created_at DESC') }
 
   def file_path
     Rails.configuration.uploads_path.join(file_name).to_s

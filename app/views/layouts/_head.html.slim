@@ -7,5 +7,5 @@ title = content_for?(:title) ? yield(:title) : 'cherashev.com'
 - if Rails.env.production? && !current_user&.admin?
   = render 'layouts/google_analytics'
 
-= stylesheet_link_tag "application", :media => 'all', 'data-turbolinks-track' => true
-= javascript_include_tag 'application', 'data-turbolinks-track' => true
+= stylesheet_link_tag "application", media: 'all', 'data-turbolinks-track': true
+= javascript_include_tag 'application', 'data-turbolinks-track': true

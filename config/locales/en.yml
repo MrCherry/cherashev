@@ -2,6 +2,8 @@ en:
   file_uploads:
     destroy:
       notice: 'File upload was successfully destroyed.'
+  messages:
+    are_you_sure: 'Are you sure?'
   errors:
     internal_server_error: "Oops. Server error."
     access_denied: "Got access?"
@@ -11,6 +13,7 @@ en:
     edit: "Edit"
     delete: "Delete"
     save: "Save"
+    upload: "Upload"
     back: "Back"
   pages:
     notices:
@@ -21,9 +24,10 @@ en:
     models:
       page:
         one: "Page"
-        few: "Pages"
-        many: "Pages"
         other: "Pages"
+      file_upload:
+        one: "File upload"
+        other: "File uploads"
     attributes:
       page:
         categories:

@@ -9,11 +9,16 @@
   .form-inputs
     .row
       .col-xs-3
-        = f.input :category, as: :select, collection: categories_options
+        = f.input :category,
+                  as: :select,
+                  collection: categories_options,
+                  selected: f.object.try(:object).try(:category)
       .col-xs-3
-        = f.input :state, as: :select, collection: states_options
-
+        = f.input :state,
+                  as: :select,
+                  collection: states_options,
+                  selected: f.object.try(:object).try(:state)
     br
 
     .form-actions
-      = f.button :submit, 'Сохранить'
+      = f.button :submit, t('actions.save')
