@@ -9,10 +9,15 @@
   .form-inputs
     .row
       .col-xs-3
-        = f.input :category, as: :select, collection: categories_options
+        = f.input :category,
+                  as: :select,
+                  collection: categories_options,
+                  selected: f.object.object.category
       .col-xs-3
-        = f.input :state, as: :select, collection: states_options
-
+        = f.input :state,
+                  as: :select,
+                  collection: states_options,
+                  selected: f.object.object.state
     br
 
     .form-actions
