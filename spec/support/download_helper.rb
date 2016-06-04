@@ -33,5 +33,6 @@ module DownloadHelper
     FileUtils.rm_f(downloads)
   end
 
-  module_function :download_content
+  module_function :download_content, :clear_downloads, :downloads,
+                  :download, :wait_for_download, :downloaded?, :downloading?
 end

@@ -19,15 +19,17 @@ RSpec.describe FileUploadsController, type: :routing do
     end
 
     it 'routes to #destroy' do
-      expect(delete: '/file_uploads/1').to
+      expect(delete: '/file_uploads/1').to(
         route_to('file_uploads#destroy', id: '1')
+      )
     end
 
     it 'routes to #download' do
       hex = Digest::MD5.hexdigest(Time.zone.now.to_s)
 
-      expect(get: "/download/#{hex}").to
+      expect(get: "/download/#{hex}").to(
         route_to('file_uploads#download', file_name: hex)
+      )
     end
   end
 end
