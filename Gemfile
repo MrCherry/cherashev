@@ -22,7 +22,8 @@ gem 'therubyracer', platforms: :ruby
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+# Turbolinks makes following links in your web application faster.
+# Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # gem 'jquery-turbolinks'
 
@@ -86,24 +87,32 @@ gem 'cancancan'
 # Fake data generation
 gem 'faker'
 
-group :development, :test do
+group :development do
+  # Deployment
   gem 'capistrano', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-rvm', require: false
 
+  # Ruby static code analyzer
+  gem 'rubocop', require: false
+
+  # Call 'byebug' anywhere in the code to stop execution and
+  # get a debugger console
+  # gem 'byebug'
+
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  # gem 'web-console', '~> 2.0'
+end
+
+group :development, :test do
   # Mutes assets pipeline log messages
   gem 'quiet_assets'
 
   # Better console
   gem 'pry-rails'
 
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  # gem 'byebug'
-
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  # gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  # Spring speeds up development by keeping your application running
+  # in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
 
