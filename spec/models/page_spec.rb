@@ -37,7 +37,7 @@ RSpec.describe Page, type: :model do
 
       it 'does not change state if it is not deleted yet' do
         page = create(:page, state: :published)
-        expect { page.restore }.to_not change{ page.state }
+        expect { page.restore }.to_not change { page.state }
       end
     end
   end

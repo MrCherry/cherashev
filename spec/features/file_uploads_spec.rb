@@ -6,7 +6,7 @@ RSpec.feature "File uploads", type: :feature, js: true do
   let!(:file_upload)        { create(:file_upload) }
   let!(:second_file_upload) { create(:file_upload) }
 
-  before(:each ) { DownloadHelper::clear_downloads }
+  before(:each ) { DownloadHelper.clear_downloads }
 
   context 'Admin user' do
     before(:each) { login_as(create(:user, role: :admin)) }
@@ -87,7 +87,7 @@ RSpec.feature "File uploads", type: :feature, js: true do
         upload_file_proc.call(valid_file)
         wait_for_xhr
         page.find('.file-upload-download-link').click
-        expect(DownloadHelper::download_content).to eq File.read(valid_file)
+        expect(DownloadHelper.download_content).to eq File.read(valid_file)
       end
     end
   end

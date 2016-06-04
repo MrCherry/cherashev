@@ -2,8 +2,6 @@ module DownloadHelper
   TIMEOUT = 1
   PATH    = Rails.root.join("tmp/downloads")
 
-  extend self
-
   def downloads
     Dir[PATH.join("*")]
   end
@@ -34,4 +32,6 @@ module DownloadHelper
   def clear_downloads
     FileUtils.rm_f(downloads)
   end
+
+  module_function :download_content
 end

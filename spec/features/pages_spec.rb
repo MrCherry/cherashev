@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "Pages", type: :feature, js: true do
-  it "can be created by admin user" do
+RSpec.feature 'Pages', type: :feature, js: true do
+  it 'can be created by admin user' do
     login_as(create(:user, role: :admin))
 
     visit new_page_path
