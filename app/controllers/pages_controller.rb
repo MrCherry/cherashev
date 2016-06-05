@@ -55,7 +55,11 @@ class PagesController < ApplicationController
   private
 
   def set_page
-    relation = Page.where("id = CAST(? AS numeric) OR alias = ?", params[:id].to_i, params[:id].to_s)
+    relation = Page.where(
+      'id = CAST(? AS numeric) OR alias = ?',
+      params[:id].to_i,
+      params[:id].to_s
+    )
     relation = relation.blog_posts if route_name == :blog_post
     relation = relation.published unless can?(:manage, Page)
     @page = relation.first!.decorate
@@ -72,8 +76,10 @@ class PagesController < ApplicationController
   end
 
   def check_access
-    if !action_name.in?(%w(blog show)) && cannot?(:manage, Page)
-      raise CanCan::AccessDenied
-    end
+    raise CanCan::AccessDenied if admin_panel? && cannot?(:manage, Page)
+  end
+
+  def admin_panel?
+    !action_name.in?(%w(blog show))
   end
 end

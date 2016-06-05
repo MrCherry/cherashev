@@ -4,7 +4,7 @@ RSpec.describe ApplicationController, type: :controller do
   describe 'rescues from exceptions' do
     controller do
       def index
-        raise StandardError.new('Just a test')
+        raise StandardError, 'Just a test'
       end
 
       def show
@@ -24,7 +24,9 @@ RSpec.describe ApplicationController, type: :controller do
       end
 
       it 'sets proper flash error message' do
-        expect(controller).to set_flash[:error].to I18n.t('errors.internal_server_error')
+        expect(controller).to set_flash[:error].to(
+          I18n.t('errors.internal_server_error')
+        )
       end
     end
 
@@ -48,7 +50,9 @@ RSpec.describe ApplicationController, type: :controller do
       end
 
       it 'sets proper flash error message' do
-        expect(controller).to set_flash[:error].to I18n.t('errors.access_denied')
+        expect(controller).to set_flash[:error].to(
+          I18n.t('errors.access_denied')
+        )
       end
     end
   end

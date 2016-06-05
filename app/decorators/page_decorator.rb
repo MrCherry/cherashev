@@ -8,7 +8,7 @@ class PageDecorator < BaseDecorator
   end
 
   def state
-    I18n.t(object.state, scope: [:activerecord, :attributes, :page, :states])
+    I18n.t(object.state, scope: %i(activerecord attributes page states))
   end
 
   def updated_at
@@ -16,6 +16,6 @@ class PageDecorator < BaseDecorator
   end
 
   def category
-    I18n.t(object.category, scope: [:activerecord, :attributes, :page, :categories])
+    I18n.t(object.category, scope: %i(activerecord attributes page categories))
   end
 end

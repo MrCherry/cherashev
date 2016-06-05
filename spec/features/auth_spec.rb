@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.feature "Auth", type: :feature do
+RSpec.feature 'Auth', type: :feature do
   context 'sign_in form' do
-    it "signs in if given credentials are valid" do
+    it 'signs in if given credentials are valid' do
       password = Faker::Internet.password(8)
 
       user = create(:user, password: password, password_confirmation: password)
@@ -17,7 +17,7 @@ RSpec.feature "Auth", type: :feature do
       expect(page).to have_text 'Вход в систему выполнен.'
     end
 
-    it "doesn't sign in if given credentials are invalid" do
+    it 'does not sign in if given credentials are invalid' do
       visit new_user_session_path
 
       fill_in 'user_email', with: Faker::Internet.safe_email

@@ -11,11 +11,11 @@ module WaitForAjax
 
   def wait_for_ajax(jquery: true)
     Timeout.timeout(Capybara.default_max_wait_time) do
-      loop until finished_all_ajax_requests?(jquery: false)
+      loop until finished_all_ajax_requests?(jquery)
     end
   end
 
-  def finished_all_ajax_requests?(jquery: true)
+  def finished_all_ajax_requests?(jquery)
     if jquery
       page.evaluate_script('jQuery.active').zero?
     else

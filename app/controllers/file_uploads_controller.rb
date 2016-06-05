@@ -27,13 +27,7 @@ class FileUploadsController < ApplicationController
 
   # POST /file_uploads
   def create
-    uploader = FileUploader.new(
-        file_name:            params[:name],
-        file_type:            params[:type],
-        upload_id:            params[:upload_id],
-        chunk:                request.raw_post,
-        content_range_header: request.headers["Content-Range"]
-    )
+    uploader = init_file_uploader
 
     uploader.upload!
 
@@ -53,8 +47,19 @@ class FileUploadsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_file_upload
-      @file_upload = FileUpload.find(params[:id])
-    end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_file_upload
+    @file_upload = FileUpload.find(params[:id])
+  end
+
+  def init_file_uploader
+    FileUploader.new(
+      file_name:            params[:name],
+      file_type:            params[:type],
+      upload_id:            params[:upload_id],
+      chunk:                request.raw_post,
+      content_range_header: request.headers['Content-Range']
+    )
+  end
 end

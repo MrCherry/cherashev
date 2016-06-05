@@ -1,1 +1,3 @@
-class Users::SessionsController < Devise::SessionsController; end
+module Users
+  class SessionsController < Devise::SessionsController; end
+end

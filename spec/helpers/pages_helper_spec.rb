@@ -7,24 +7,24 @@ RSpec.describe PagesHelper, type: :helper do
   describe 'options' do
     it 'categories_options' do
       options =
-          Page.categories.map do |category, _|
-            [
-                t(category.to_sym, scope: [:activerecord, :attributes, :page, :categories]),
-                category
-            ]
-          end
+        Page.categories.map do |category, _|
+          [
+            t(category.to_sym, scope: [:activerecord, :attributes, :page, :categories]),
+            category
+          ]
+        end
 
       expect(helper.categories_options).to eq options
     end
 
     it 'states_options' do
       options =
-          Page.states.map do |state, _|
-            [
-                t(state.to_sym, scope: [:activerecord, :attributes, :page, :states]),
-                state
-            ]
-          end
+        Page.states.map do |state, _|
+          [
+            t(state.to_sym, scope: [:activerecord, :attributes, :page, :states]),
+            state
+          ]
+        end
 
       expect(helper.states_options).to eq options
     end

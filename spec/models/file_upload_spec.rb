@@ -15,7 +15,9 @@ RSpec.describe FileUpload, type: :model do
     end
 
     it 'validates inclusion of file_type field' do
-      is_expected.to validate_inclusion_of(:file_type).in_array(%w(image/jpeg image/png image/bmp application/zip))
+      is_expected.to validate_inclusion_of(:file_type).in_array(
+        %w(image/jpeg image/png image/bmp application/zip)
+      )
     end
   end
 

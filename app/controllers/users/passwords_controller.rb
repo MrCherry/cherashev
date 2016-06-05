@@ -1,1 +1,3 @@
-class Users::PasswordsController < Devise::PasswordsController; end
+module Users
+  class PasswordsController < Devise::PasswordsController; end
+end

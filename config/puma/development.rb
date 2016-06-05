@@ -1,5 +1,5 @@
 rails_env = ENV['RAILS_ENV'] || 'development'
-vagrant = Dir.exists?('/cherashev')
+vagrant = Dir.exist?('/cherashev')
 
 app_dir = (vagrant ? '/cherashev' : Dir.pwd)
 tmp_dir = "#{app_dir}/tmp"
@@ -30,9 +30,6 @@ end
 
 on_worker_boot do
   # Don't bother having the master process hang onto older connections.
-  defined?(ActiveRecord::Base) and
-    ActiveRecord::Base.connection.disconnect!
-
-  defined?(ActiveRecord::Base) and
-    ActiveRecord::Base.establish_connection
+  defined?(ActiveRecord::Base) && ActiveRecord::Base.connection.disconnect!
+  defined?(ActiveRecord::Base) && ActiveRecord::Base.establish_connection
 end

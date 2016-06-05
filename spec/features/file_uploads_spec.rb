@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.feature "File uploads", type: :feature, js: true do
+RSpec.feature 'File uploads', type: :feature, js: true do
   let(:valid_file)   { File.join(Rails.root.join, 'spec', 'fixtures', '640.png') }
   let(:invalid_file) { File.join(Rails.root.join, 'spec', 'fixtures', 'invalid.txt') }
   let!(:file_upload)        { create(:file_upload) }
   let!(:second_file_upload) { create(:file_upload) }
 
-  before(:each ) { DownloadHelper.clear_downloads }
+  before(:each) { DownloadHelper.clear_downloads }
 
   context 'Admin user' do
     before(:each) { login_as(create(:user, role: :admin)) }

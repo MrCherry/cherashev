@@ -1,7 +1,11 @@
 class FileUpload < ActiveRecord::Base
   validates :original_file_name, presence: true
   validates :file_name, presence: true, uniqueness: true
-  validates :file_type, inclusion: {in: %w(image/jpeg image/png image/bmp application/zip)}
+
+  validates :file_type,
+            inclusion: {
+              in: %w(image/jpeg image/png image/bmp application/zip)
+            }
 
   before_destroy :remove_file
 
@@ -14,7 +18,8 @@ class FileUpload < ActiveRecord::Base
   private
 
   def remove_file
-    FileUploader::remove_file file_path
-  rescue => _e
+    FileUploader.remove_file file_path
+  rescue => exception
+    Rails.logger.info "Failed to remove file #{file_path} because #{exception}"
   end
 end

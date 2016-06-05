@@ -3,6 +3,10 @@ inherit_from: .rubocop_todo.yml
 AllCops:
   DisabledByDefault: true
   TargetRubyVersion: 2.3
+  Exclude:
+    - 'bin/*'
+    - 'db/schema.rb'
+    - 'provision/*/*'
 
 #################### Lint ################################
 
@@ -236,7 +240,7 @@ Metrics/CyclomaticComplexity:
 Metrics/LineLength:
   Description: 'Limit lines to 80 characters.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#80-character-limits'
-  Enabled: true
+  Enabled: false
 
 Metrics/MethodLength:
   Description: 'Avoid methods longer than 30 lines of code.'

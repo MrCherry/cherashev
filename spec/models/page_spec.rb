@@ -12,7 +12,9 @@ RSpec.describe Page, type: :model do
     end
 
     it 'defines enum for state attribute' do
-      is_expected.to define_enum_for(:state).with %i(draft published archived deleted)
+      is_expected.to define_enum_for(:state).with(
+        %i(draft published archived deleted)
+      )
     end
   end
 

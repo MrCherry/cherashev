@@ -38,4 +38,4 @@ namespace :db do
   end
 end
 
-task :db => 'db:default'
+task db: 'db:default'

@@ -20,13 +20,25 @@ prune_bundler
 restart_command 'bundle exec bin/puma'
 
 # Logging
-stdout_redirect "#{app_dir}/log/puma.stdout.log", "#{app_dir}/log/puma.stderr.log", true
+stdout_redirect(
+  "#{app_dir}/log/puma.stdout.log",
+  "#{app_dir}/log/puma.stderr.log",
+  true
+)
 
 # activate_control_app "unix://#{tmp_dir}/sockets/pumactl.#{rails_env}.sock"
 
 on_worker_boot do
   require 'active_record'
+
+  begin
+    ActiveRecord::Base.connection.disconnect!
+  rescue ActiveRecord::ConnectionNotEstablished
+    Rails.logger.info 'Already disconnected'
+  end
+
   config_path = File.expand_path('../../database.yml', __FILE__)
-  ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
-  ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || YAML.load_file(config_path)[ENV['RAILS_ENV']])
+  ActiveRecord::Base.establish_connection(
+    ENV['DATABASE_URL'] || YAML.load_file(config_path)[ENV['RAILS_ENV']]
+  )
 end

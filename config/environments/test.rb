@@ -50,4 +50,6 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.uploads_path = Rails.root.join('public', 'uploads')
+
+  WebMock.disable_net_connect!(allow_localhost: true, allow: 'codeclimate.com')
 end

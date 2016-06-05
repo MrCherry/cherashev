@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe PageDecorator, type: :decorator  do
+RSpec.describe PageDecorator, type: :decorator do
   let(:some_datetime)     { Time.zone.now }
   let(:page)              { create(:page, updated_at: some_datetime, state: Page.states[:published]).decorate }
   let(:not_pubished_page) { create(:page, updated_at: some_datetime, state: Page.states[:draft]).decorate }
