@@ -1,9 +1,12 @@
 class Page < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   enum category: %i(static blog)
   enum state: %i(draft published archived deleted)
 
   validates :title, presence: true
-  validates :alias, presence: true # TODO: friendly_id
+  validates :slug, presence: true
 
   scope :latest, -> { order('created_at DESC') }
   scope :published, -> { where(state: Page.states[:published]) }

@@ -41,7 +41,7 @@ ru:
         id: "№"
         title: "Название"
         category: "Категория"
-        alias: "Псевдоним"
+        slug: "Псевдоним"
         state: "Статус"
         categories:
           static: "Обычная"

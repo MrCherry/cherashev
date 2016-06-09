@@ -4,6 +4,6 @@ FactoryGirl.define do
     p.text     { Faker::Lorem.sentence }
     p.category { Page.categories.keys.sample }
     p.state    { Page.states.keys.sample }
-    p.alias    { Faker::Lorem.word }
+    p.slug     { Faker::Lorem.word }
   end
 end

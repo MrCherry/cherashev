@@ -56,7 +56,7 @@ class PagesController < ApplicationController
 
   def set_page
     relation = Page.where(
-      'id = CAST(? AS numeric) OR alias = ?',
+      'id = CAST(? AS numeric) OR slug = ?',
       params[:id].to_i,
       params[:id].to_s
     )
@@ -66,7 +66,7 @@ class PagesController < ApplicationController
   end
 
   def page_params
-    params.require(:page).permit(:title, :text, :category, :state, :alias)
+    params.require(:page).permit(:title, :text, :category, :state, :slug)
   end
 
   def route_name

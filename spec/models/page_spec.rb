@@ -4,7 +4,7 @@ RSpec.describe Page, type: :model do
   describe 'validations' do
     it 'validates presence of required fields' do
       is_expected.to validate_presence_of(:title)
-      is_expected.to validate_presence_of(:alias)
+      is_expected.to validate_presence_of(:slug)
     end
 
     it 'defines enum for category attribute' do
