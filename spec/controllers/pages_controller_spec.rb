@@ -97,6 +97,7 @@ RSpec.describe PagesController, type: :controller do
 
       it 'redirects to the page' do
         put :update, id: page.to_param, page: valid_attributes
+        page.reload
         expect(response).to redirect_to(page)
       end
     end

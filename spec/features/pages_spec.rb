@@ -7,7 +7,7 @@ RSpec.feature 'Pages', type: :feature, js: true do
     visit new_page_path
 
     fill_in 'page_title', with: Faker::Lorem.sentence
-    fill_in 'page_alias', with: Faker::Lorem.word.downcase
+    fill_in 'page_slug', with: Faker::Lorem.word.downcase
 
     page.execute_script "$('iframe.wysihtml5-sandbox').contents().find('body').first().html('#{Faker::Lorem.sentence}')"
     page.execute_script "$('#page_category').val('blog')"
@@ -15,7 +15,7 @@ RSpec.feature 'Pages', type: :feature, js: true do
 
     click_button I18n.t('actions.save')
 
-    expect(current_path).to eq(page_path(Page.last.id))
+    expect(current_path).to eq(page_path(Page.last.slug))
   end
 
   it "can't be created by common user" do

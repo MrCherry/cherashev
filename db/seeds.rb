@@ -7,7 +7,7 @@ if Page.all.count == 0
       text: Faker::Lorem.paragraphs(rand(5..10)).map { |p| "<p>#{p}</p>" }.join("\n"),
       category: :blog,
       state: :published,
-      alias: Faker::Lorem.word + i.to_s
+      slug: Faker::Lorem.word + i.to_s
     )
   end
 
@@ -17,7 +17,7 @@ if Page.all.count == 0
       text: Faker::Lorem.paragraphs(rand(5..10)).map { |p| "<p>#{p}</p>" }.join("\n"),
       category: :static,
       state: :published,
-      alias: Faker::Lorem.word + (i * 10).to_s
+      slug: Faker::Lorem.word + (i * 10).to_s
     )
   end
 
@@ -26,21 +26,21 @@ if Page.all.count == 0
     text: Faker::Lorem.paragraphs(rand(5..10)).map { |p| "<p>#{p}</p>" }.join("\n"),
     category: :static,
     state: :published,
-    alias: 'about'
+    slug: 'about'
   )
   Page.create!(
     title: 'Резюме',
     text: Faker::Lorem.paragraphs(rand(5..10)).map { |p| "<p>#{p}</p>" }.join("\n"),
     category: :static,
     state: :published,
-    alias: 'resume'
+    slug: 'resume'
   )
   Page.create!(
     title: 'Контакты',
     text: Faker::Lorem.paragraphs(rand(5..10)).map { |p| "<p>#{p}</p>" }.join("\n"),
     category: :static,
     state: :published,
-    alias: 'contacts'
+    slug: 'contacts'
   )
 end
 
