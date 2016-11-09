@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   enum role: %i(visitor admin)
 
   # Include default devise modules. Others available are:

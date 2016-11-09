@@ -1,4 +1,4 @@
-class FileUpload < ActiveRecord::Base
+class FileUpload < ApplicationRecord
   validates :original_file_name, presence: true
   validates :file_name, presence: true, uniqueness: true
 
