@@ -1,7 +1,6 @@
 set :application, 'cherashev'
 set :app_version, '0.2'
 
-set :scm, :git
 set :pty, true
 set :repo_url, 'git@github.com:MrCherry/cherashev.git'
 set :keep_releases, 5
@@ -9,7 +8,7 @@ set :keep_releases, 5
 set :ssh_options, forward_agent: true, keys: %w('~/.ssh/cherashev_rsa.pub')
 
 # set :rvm_type, :user # Defaults to: :auto
-set :rvm_ruby_version, '2.3.1@cherashev' # Defaults to: 'default'
+set :rvm_ruby_version, '2.4.2@cherashev' # Defaults to: 'default'
 
 # Default value for :linked_files is []
 set :linked_files, fetch(:linked_files, %w(config/database.yml config/redis.yml config/secrets.yml))
