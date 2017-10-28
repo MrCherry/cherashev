@@ -28,11 +28,10 @@ class FileUploadsController < ApplicationController
   # POST /file_uploads
   def create
     uploader = init_file_uploader
-
     uploader.upload!
-
+    
     if uploader.file_upload.present? && !uploader.file_upload.new_record?
-      render text: uploader.file_upload.id, status: :created
+      render plain: uploader.file_upload.id, status: :created
     else
       render plain: '', status: :partial_content
     end
