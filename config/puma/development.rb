@@ -15,14 +15,13 @@ preload_app!
 pidfile "#{tmp_dir}/pids/puma.#{rails_env}.pid"
 state_path "#{tmp_dir}/pids/puma.#{rails_env}.state"
 
-bind "unix://#{tmp_dir}/sockets/puma.#{rails_env}.sock"
-
 prune_bundler
 
 restart_command 'bundle exec bin/puma'
 
 # Logging
 if vagrant
+  bind "unix://#{tmp_dir}/sockets/puma.#{rails_env}.sock"
   stdout_redirect "#{app_dir}/log/puma.stdout.log", "#{app_dir}/log/puma.stderr.log", true
 end
 

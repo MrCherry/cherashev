@@ -14,8 +14,8 @@ RSpec.feature 'Pages', type: :feature, js: true do
     page.execute_script "$('#page_state').val('published')"
 
     click_button I18n.t('actions.save')
-
-    expect(current_path).to eq(page_path(Page.last.slug))
+	  
+    expect(current_path).to eq(page_path(Page.last&.slug))
   end
 
   it "can't be created by common user" do
