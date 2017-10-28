@@ -8,6 +8,9 @@ AllCops:
     - 'db/schema.rb'
     - 'provision/*/*'
 
+Metrics/LineLength:
+  Max: 100
+
 #################### Lint ################################
 
 Lint/AmbiguousOperator:
@@ -1056,6 +1059,7 @@ Style/StringLiterals:
   Description: 'Checks if uses of quotes match the configured preference.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#consistent-string-literals'
   Enabled: true
+  EnforcedStyle: single_quotes
 
 Style/StringLiteralsInInterpolation:
   Description: >-

@@ -46,7 +46,7 @@ end
 
 if User.all.count == 0
   password = 'qazwsxedc'
-  
+
   User.create!(
     email: 'admin@cherashev.com',
     password: password,
