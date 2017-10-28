@@ -12,6 +12,7 @@ engines:
       languages:
       - ruby
       - javascript
+      - coffeescript
   eslint:
     enabled: false
   fixme:

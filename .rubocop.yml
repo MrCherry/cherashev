@@ -2,11 +2,14 @@ inherit_from: .rubocop_todo.yml
 
 AllCops:
   DisabledByDefault: true
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.4
   Exclude:
     - 'bin/*'
     - 'db/schema.rb'
     - 'provision/*/*'
+
+Metrics/LineLength:
+  Max: 100
 
 #################### Lint ################################
 
@@ -1056,6 +1059,7 @@ Style/StringLiterals:
   Description: 'Checks if uses of quotes match the configured preference.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#consistent-string-literals'
   Enabled: true
+  EnforcedStyle: single_quotes
 
 Style/StringLiteralsInInterpolation:
   Description: >-

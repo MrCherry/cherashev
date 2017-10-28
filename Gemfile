@@ -1,19 +1,19 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.6'
+gem 'rails', '~> 5.1'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'execjs', platforms: :ruby
@@ -44,7 +44,8 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'simple_form'
 
 # Decorators
-gem 'draper'
+gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
+gem 'draper', '~> 3.0.0.pre1'
 
 # Use Puma as the app server
 gem 'puma'
@@ -64,7 +65,6 @@ gem 'truncate_html'
 
 # Redis cache store
 gem 'redis-rails'
-gem 'redis-rack-cache'
 
 # RestClient
 gem 'rest-client'
@@ -80,7 +80,7 @@ gem 'cancancan'
 # gem 'state_machine'
 
 # Slug generation
-gem 'friendly_id', '~> 5.1.0'
+gem 'friendly_id'
 
 # Fake data generation
 gem 'faker'
@@ -103,9 +103,6 @@ group :development do
 end
 
 group :development, :test do
-  # Mutes assets pipeline log messages
-  gem 'quiet_assets'
-
   # Better console
   gem 'pry-rails'
 
@@ -119,6 +116,7 @@ group :test do
   gem 'spring-commands-rspec'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'headless'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
   gem 'site_prism'
@@ -126,5 +124,4 @@ group :test do
   gem 'database_cleaner'
   gem 'simplecov'
   gem 'shoulda-matchers'
-  gem 'codeclimate-test-reporter', require: false
 end

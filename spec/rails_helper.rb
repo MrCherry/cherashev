@@ -11,12 +11,10 @@ RSpec.configure do |config|
   end
 end
 
-# CodeClimate
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.start
-
 # WebMock
 require 'webmock/rspec'
+WebMock.enable!(allow_localhost: true)
+WebMock.disable_net_connect!(allow_localhost: true)
 WebMock.stub_request(:fonts, /maps\.googleapis\.com.*'/).with(body: '')
 
 require File.expand_path('../../config/environment', __FILE__)

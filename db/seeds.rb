@@ -45,10 +45,12 @@ if Page.all.count == 0
 end
 
 if User.all.count == 0
+  password = 'qazwsxedc'
+
   User.create!(
     email: 'admin@cherashev.com',
-    password: 'qazwsxedc',
-    password_confirmation: 'qazwsxedc',
+    password: password,
+    password_confirmation: password,
     role: :admin
   )
 end
