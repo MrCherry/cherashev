@@ -1,0 +1,47 @@
+version: '2'
+
+services:
+  db:
+    image: kiasaki/alpine-postgres:9.6
+    volumes:
+      - ~/containers/data/postgresql:/var/lib/postgresql/data
+      - ~/containers/backups/db:/var/backups
+    environment:
+      - SECRET_KEY_BASE=a737e517acb9fa57ecfd1991658e3294f596f1bd99e356d3fa4438db8fdc965be603c9c95fd332ff80e6feccc6938cebe37b89138b7279e65626e02e22f2e8b5
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  # bundle:
+  #   image: alpine:3.6
+  #   command: echo 'Sharing bundle'
+  #   volumes:
+  #     - /var/bundle
+
+  redis:
+    image: redis:4.0-alpine
+    volumes:
+      - ~/containers/data/redis:/data
+
+  app:
+    image: rails-dev-alpine
+    build: .
+    ports:
+      - '4242:4242'
+    links:
+      - db
+      - redis
+    volumes:
+      - .:/var/www/cherashev
+      - ~/containers/data/uploads:/var/openbankru/public/uploads
+    environment:
+      - RAILS_ENV=production
+      - SECRET_KEY_BASE: abcdefg
+    # volumes_from:
+    #   - bundle
+
+  # web:
+  #   image: nginx:1.11.5-alpine
+  #   links:
+  #     - app
+  #   volumes:
+  #     - ~/containers/configs/nginx:/etc/nginx

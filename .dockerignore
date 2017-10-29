@@ -1,0 +1,13 @@
+.bundle
+.byebug_history
+.capistrano
+.dockerignore
+.git
+.env
+.idea
+coverage
+log/*
+provision
+public/assets
+public/uploads
+tmp/*

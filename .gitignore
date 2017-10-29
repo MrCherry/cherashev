@@ -4,16 +4,14 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-# Ignore bundler config.
-/.bundle
-
-# Ignore all logfiles and tempfiles.
-/log/*
 !/log/.keep
-/tmp
-.idea
-coverage
 .capistrano
-public/uploads
-public/assets
+.env
+.idea
+/.bundle
+/log/*
+/tmp
 bin
+coverage
+public/assets
+public/uploads

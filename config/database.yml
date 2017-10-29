@@ -13,5 +13,6 @@ test:
 production:
   <<: *default
   database: cherashev_production
-  username: cherashev
-  password: ''
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  
