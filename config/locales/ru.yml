@@ -1,4 +1,5 @@
 ru:
+  fyodor_cherashev: Fyodor Cherashev
   file_uploads:
     destroy:
       notice: 'Файл был успешно удалён.'

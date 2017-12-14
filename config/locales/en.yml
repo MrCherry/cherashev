@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  fyodor_cherashev: Fyodor Cherashev
   file_uploads:
     destroy:
       notice: 'File upload was successfully destroyed.'
