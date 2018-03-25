@@ -20,6 +20,9 @@ module Cherashev
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :en
 
+    # Use NodeJS for assets compilation
+    ExecJS.runtime = ExecJS::Runtimes::Node
+
     config.generators do |g|
       g.test_framework :rspec
       g.template_engine :slim
