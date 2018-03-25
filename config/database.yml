@@ -1,9 +1,11 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: postgres
-  password: None
-  pool: 5
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i %>
+  host: <%= ENV.fetch("POSTGRES_HOST") { 'localhost' } %>
+  port: <%= ENV.fetch("POSTGRES_PORT") { 5432 } %>
+  username: <%= ENV.fetch("POSTGRES_USER") { 'postgres' } %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD") { 'postgres' } %>
 development:
   <<: *default
   database: cherashev_development
@@ -13,6 +15,3 @@ test:
 production:
   <<: *default
   database: cherashev_production
-  username: <%= ENV['POSTGRES_USER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
-  
