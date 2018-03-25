@@ -1,5 +1,5 @@
 ru:
-  fyodor_cherashev: Fyodor Cherashev
+  fyodor_cherashev: Фёдор Черашев
   file_uploads:
     destroy:
       notice: 'Файл был успешно удалён.'
