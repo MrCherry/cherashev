@@ -5,6 +5,7 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 !/log/.keep
+.ash_history
 .capistrano
 .env
 .idea
@@ -15,3 +16,6 @@ bin
 coverage
 public/assets
 public/uploads
+
+# Ignore encrypted secrets key file.
+config/secrets.yml.key

@@ -2,7 +2,7 @@ FROM ruby:2.5-alpine
 
 LABEL maintainer="cherashev.f@gmail.com"
 
-ARG rails_env=production
+ARG rails_env=development
 
 # Image building parameters
 ENV APP_HOME="/var/www/cherashev" \
@@ -24,11 +24,6 @@ RUN echo "@edge http://dl-3.alpinelinux.org/alpine/edge/main" >> /etc/apk/reposi
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 
-# Create a user for the app
-RUN addgroup $APP_USER \
-	&& adduser -D -G $APP_USER $APP_USER \
- 	&& chown -R $APP_USER.$APP_USER $APP_HOME
-
 # Environment variables
 ENV HOME=$APP_HOME \
 	PATH=$APP_HOME/bin:$PATH \
@@ -39,20 +34,10 @@ ENV HOME=$APP_HOME \
 
 # Install gems
 RUN mkdir -p $BUNDLE_PATH
-RUN chown -R $APP_USER:$APP_USER $BUNDLE_PATH
-ADD --chown=ruby:ruby Gemfile* $APP_HOME/
-
-# Change current user to ruby
-USER ruby
-
-# Install ruby gems
-RUN bundle install --jobs 4 --retry 4 --clean --deployment --without development --without test --path=$BUNDLE_PATH
+ADD Gemfile* $APP_HOME/
 
 # Add app's files
-ADD --chown=ruby:ruby . $APP_HOME
-
-# Precompile assets
-RUN bundle exec rails assets:precompile
+ADD . $APP_HOME
 
 EXPOSE $PORT
 
