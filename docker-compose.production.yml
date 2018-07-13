@@ -2,55 +2,39 @@ version: '3'
 
 services:
   db:
-    image: postgres:10.4-alpine
-    restart: on-failure
-    ports:
-      - "5432"
-    networks:
-      - backend
-    volumes:
-      - db-data:/var/lib/postgresql/data/pgdata
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      PGDATA: /var/lib/postgresql/data/pgdata
+    restart: always
 
   redis:
-    image: redis:4.0-alpine
-    restart: on-failure
-    ports:
-      - "6379"
-    networks:
-      - backend
-    volumes:
-      - redis-data:/data
+    restart: always
 
   app:
-    image: cherashev-dev-alpine
-    restart: on-failure
+    restart: always
     build:
       context: .
-      dockerfile: Development.Dockerfile
+      dockerfile: Production.Dockerfile
       args:
-        rails_env: development
+        rails_env: production
     ports:
       - 4242:4242
     networks:
       - frontend
       - backend
     volumes:
-      - .:/var/www/cherashev
       - uploads:/var/www/cherashev/public/uploads
-      - bundle:/var/bundle
     command: /bin/sh bin/start
     depends_on:
       - db
       - redis
     deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 1024M
       restart_policy:
         condition: on-failure
     environment:
-      RAILS_ENV: development
+      RAILS_ENV: production
       RAILS_MAX_THREADS: 5
       WEB_CONCURRENCY: 4
       POSTGRES_HOST: db
@@ -71,13 +55,3 @@ services:
       - app
     networks:
       - frontend
-
-networks:
-  frontend:
-  backend:
-
-volumes:
-  bundle:
-  uploads:
-  db-data:
-  redis-data:

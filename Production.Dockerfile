@@ -7,7 +7,7 @@ ARG rails_env=production
 # Image building parameters
 ENV APP_HOME="/var/www/cherashev" \
   APP_USER=ruby \
-  PG_VERSION="10.3-r0" \
+  PG_VERSION="10.4-r0" \
   PORT="4242"
 ENV BUILD_PACKAGES="build-base" \
   DEV_PACKAGES="zlib-dev libxml2-dev libxslt-dev yaml-dev git nodejs" \
