@@ -28,11 +28,6 @@ services:
   app:
     image: cherashev-dev-alpine
     restart: on-failure
-    build:
-      context: .
-      dockerfile: Development.Dockerfile
-      args:
-        rails_env: development
     ports:
       - 4242:4242
     networks:
