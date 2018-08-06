@@ -7,3 +7,11 @@ services:
       dockerfile: Development.Dockerfile
       args:
         rails_env: development
+    command: /bin/sh bin/start
+    ports:
+      - 4242:4242
+    volumes:
+      - .:$APP_HOME
+      - bundle:/var/bundle
+      - public:$APP_HOME/public
+      - uploads:$APP_HOME/public/uploads

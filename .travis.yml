@@ -9,7 +9,7 @@ services:
   - postgresql
   - redis-server
 addons:
-  postgresql: 10.4
+  postgresql: 9.6
 before_script:
   - psql -c 'create database cherashev_test;' -U postgres
   - RAILS_ENV=test bundle exec rake db:schema:load

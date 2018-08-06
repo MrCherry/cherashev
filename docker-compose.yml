@@ -1,6 +1,32 @@
 version: '3'
 
 services:
+  app:
+    image: cherashev/cherashev-app:latest
+    restart: on-failure
+    ports:
+      - "4242"
+    networks:
+      - frontend
+      - backend
+    volumes:
+      - public:$APP_HOME/public
+      - uploads:$APP_HOME/public/uploads
+    depends_on:
+      - db
+      - redis
+    environment:
+      RAILS_ENV: development
+      RAILS_MAX_THREADS: 5
+      WEB_CONCURRENCY: 4
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      SECRET_KEY_BASE: ''
+
   db:
     image: postgres:10.4-alpine
     restart: on-failure
@@ -25,54 +51,13 @@ services:
     volumes:
       - redis-data:/data
 
-  app:
-    image: cherashev-dev-alpine
-    restart: on-failure
-    ports:
-      - 4242:4242
-    networks:
-      - frontend
-      - backend
-    volumes:
-      - .:/var/www/cherashev
-      - uploads:/var/www/cherashev/public/uploads
-      - bundle:/var/bundle
-    command: /bin/sh bin/start
-    depends_on:
-      - db
-      - redis
-    deploy:
-      restart_policy:
-        condition: on-failure
-    environment:
-      RAILS_ENV: development
-      RAILS_MAX_THREADS: 5
-      WEB_CONCURRENCY: 4
-      POSTGRES_HOST: db
-      POSTGRES_PORT: 5432
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
-      SECRET_KEY_BASE: ''
-
-  web:
-    image: nginx:1.15.0-alpine
-    restart: always
-    ports:
-      - 80:80
-      - 443:443
-    depends_on:
-      - app
-    networks:
-      - frontend
-
 networks:
   frontend:
   backend:
 
 volumes:
   bundle:
+  public:
   uploads:
   db-data:
   redis-data:

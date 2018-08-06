@@ -1,40 +1,21 @@
 version: '3'
 
 services:
-  db:
-    restart: always
-
-  redis:
-    restart: always
-
   app:
     restart: always
-    image: cherashev/cherashev:latest
     build:
       context: .
       dockerfile: Production.Dockerfile
       args:
         rails_env: production
-    ports:
-      - 4242:4242
     networks:
       - frontend
       - backend
-    volumes:
-      - uploads:/var/www/cherashev/public/uploads
-    command: /bin/sh bin/start
     depends_on:
       - db
       - redis
-    deploy:
-      replicas: 1
-      resources:
-        limits:
-          cpus: "1.0"
-          memory: 512M
-      restart_policy:
-        condition: on-failure
     environment:
+      APP_HOME: /var/www/cherashev
       RAILS_ENV: production
       RAILS_MAX_THREADS: 5
       WEB_CONCURRENCY: 1
@@ -47,12 +28,24 @@ services:
       SECRET_KEY_BASE: ''
 
   web:
-    image: nginx:1.15.0-alpine
+    image: nginx:1.15.2-alpine
     restart: always
+    networks:
+      - frontend
+    depends_on:
+      - app
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./certs:/etc/certs
+      - public:$APP_HOME/public
     ports:
       - 80:80
       - 443:443
-    depends_on:
-      - app
-    networks:
-      - frontend
+    environment:
+      APP_HOME: /var/www/cherashev
+
+  db:
+    restart: always
+
+  redis:
+    restart: always
