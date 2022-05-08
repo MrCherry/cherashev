@@ -22,21 +22,21 @@ if Page.all.count == 0
   end
 
   Page.create!(
-    title: 'Обо мне',
+    title: 'About me',
     text: Faker::Lorem.paragraphs(rand(5..10)).map { |p| "<p>#{p}</p>" }.join("\n"),
     category: :static,
     state: :published,
     slug: 'about'
   )
   Page.create!(
-    title: 'Резюме',
+    title: 'Resume',
     text: Faker::Lorem.paragraphs(rand(5..10)).map { |p| "<p>#{p}</p>" }.join("\n"),
     category: :static,
     state: :published,
     slug: 'resume'
   )
   Page.create!(
-    title: 'Контакты',
+    title: 'Contacts',
     text: Faker::Lorem.paragraphs(rand(5..10)).map { |p| "<p>#{p}</p>" }.join("\n"),
     category: :static,
     state: :published,

@@ -7,7 +7,7 @@ nav.navbar.navbar-default.navbar-static-top role="navigation"
         span.icon-bar
         span.icon-bar
 
-      = link_to 'puts puts puts', root_path, class: 'navbar-brand text-bold btn btn-lg'
+      = link_to t('.fyodor_cherashev'), root_path, class: 'navbar-brand text-bold btn btn-lg'
 
     #nav-bar.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-left
@@ -30,6 +30,6 @@ nav.navbar.navbar-default.navbar-static-top role="navigation"
                 li = link_to 'New file', new_file_upload_path
           li = link_to 'My account', edit_user_registration_path
           li = link_to 'Sign out', destroy_user_session_path, method: :delete, data: {confirm: 'Are you sure?'}
-        - else
-          li = link_to 'Sign in', new_user_session_path
-          li = link_to 'Sign up', new_user_registration_path
+        / - else
+        /   li = link_to 'Sign in', new_user_session_path
+        /   li = link_to 'Sign up', new_user_registration_path

@@ -18,7 +18,10 @@ module Cherashev
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    config.i18n.default_locale = :ru
+    config.i18n.default_locale = :en
+
+    # Use NodeJS for assets compilation
+    ExecJS.runtime = ExecJS::Runtimes::Node
 
     config.generators do |g|
       g.test_framework :rspec
@@ -32,5 +35,12 @@ module Cherashev
 
     # Set cache store to redis
     config.cache_store = :redis_store, config.redis
+
+    if ENV['DOCKER'].present?
+      logger           = ActiveSupport::Logger.new(STDOUT)
+      logger.formatter = config.log_formatter
+      config.log_tags  = %i[subdomain uuid]
+      config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    end
   end
 end
