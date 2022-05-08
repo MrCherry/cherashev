@@ -16,6 +16,7 @@ services:
       - db
       - redis
     environment:
+      APP_HOME: /var/www/cherashev
       RAILS_ENV: development
       RAILS_MAX_THREADS: 5
       WEB_CONCURRENCY: 4
@@ -28,7 +29,7 @@ services:
       SECRET_KEY_BASE: ''
 
   db:
-    image: postgres:10.4-alpine
+    image: postgres:13.6-alpine
     restart: on-failure
     ports:
       - "5432"

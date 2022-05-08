@@ -1,5 +1,5 @@
 en:
-  fyodor_cherashev: Fyodor Cherashev
+  fyodor_cherashev: Fedor Cherashev
   file_uploads:
     destroy:
       notice: 'File upload was successfully destroyed.'

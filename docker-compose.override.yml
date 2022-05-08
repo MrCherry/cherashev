@@ -10,8 +10,8 @@ services:
     command: /bin/sh bin/start
     ports:
       - 4242:4242
+    environment:
+      APP_HOME: /var/www/cherashev
     volumes:
-      - .:$APP_HOME
-      - bundle:/var/bundle
-      - public:$APP_HOME/public
-      - uploads:$APP_HOME/public/uploads
+      - .:/var/www/cherashev
+      - /Users/drwg/src/_ruby/bundle:/var/bundle
